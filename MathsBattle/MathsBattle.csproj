@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{607A3E54-D786-4654-A312-89F6F51DB9FB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MathsBattle</RootNamespace>
+    <AssemblyName>MathsBattle</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MathsBattle.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameObjects\Cards\Card.cs" />
+    <Compile Include="GameObjects\Cards\CardTemplate.cs" />
+    <Compile Include="GameObjects\Cards\ContinuedAttack.cs" />
+    <Compile Include="GameObjects\Cards\ContinuedHealing.cs" />
+    <Compile Include="GameObjects\Cards\MegaAttack.cs" />
+    <Compile Include="GameObjects\Cards\NormalAttack.cs" />
+    <Compile Include="GameObjects\CustomControls\QuestionCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameObjects\CustomControls\QuestionCard.Designer.cs">
+      <DependentUpon>QuestionCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameObjects\CustomControls\TimedEffectCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Question\EquationInOneUnknown.cs" />
+    <Compile Include="GameObjects\Question\LinearEquationInTwoUnknown.cs" />
+    <Compile Include="GameObjects\Question\Question.cs" />
+    <Compile Include="GameObjects\Question\QuestionTemplate.cs" />
+    <Compile Include="GameObjects\Question\SimplePercentage.cs" />
+    <Compile Include="GameObjects\TimedEvent.cs" />
+    <Compile Include="MaterialSkin\Animations\AnimationDirection.cs" />
+    <Compile Include="MaterialSkin\Animations\AnimationManager.cs" />
+    <Compile Include="MaterialSkin\Animations\Animations.cs" />
+    <Compile Include="MaterialSkin\ColorScheme.cs" />
+    <Compile Include="MaterialSkin\Controls\MaterialCardPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialDivider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialAvatar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialFlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialRaisedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialSingleLineTextField.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialSmallCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialToggle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\DrawHelper.cs" />
+    <Compile Include="MaterialSkin\IMaterialControl.cs" />
+    <Compile Include="MaterialSkin\MaterialSkinManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameObjects\CustomControls\QuestionCard.resx">
+      <DependentUpon>QuestionCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialSkin\Controls\MaterialForm.resx">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="MaterialSkin\Resources\Roboto-Medium.ttf" />
+    <None Include="MaterialSkin\Resources\Roboto-Regular.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StartScreenBGDark.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StartScreenBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_keyboard_arrow_right_black_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_keyboard_arrow_right_white_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tips.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_chevron_right_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_chevron_right_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_chevron_left_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_chevron_left_white_24dp.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
