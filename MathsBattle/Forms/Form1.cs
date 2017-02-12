@@ -23,21 +23,25 @@ namespace MathsBattle
     public partial class Form1 : MaterialForm
     {
         #region Variables
+        //variables for form1
         const int actionBarHeight = 24;
         const int statusBarHeight = 40;
         const bool NO_BG = false;
 
+        //variables for start screen
         string[] tips = MathsBattle.Properties.Resources.Tips.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         int tipsNo;
         GameStartMode GameMode;
         enum GameStartMode { battle, exercise }
 
+        //variables for battle
         int battleTick;
         Player me;
         Player opp;
         int questionNo = 1;
         int oppLevel = 0;
 
+        //variables for exercise mode
         int exerciseTick;
         int exQuestionNo = 1;
         int exScore = 0;
