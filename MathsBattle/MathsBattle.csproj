@@ -80,6 +80,7 @@
     <Compile Include="GameObjects\Question\Question.cs" />
     <Compile Include="GameObjects\Question\QuestionTemplate.cs" />
     <Compile Include="GameObjects\Question\SimplePercentage.cs" />
+    <Compile Include="GameObjects\Question\Triangle.cs" />
     <Compile Include="GameObjects\TimedEvent.cs" />
     <Compile Include="MaterialSkin\Animations\AnimationDirection.cs" />
     <Compile Include="MaterialSkin\Animations\AnimationManager.cs" />
