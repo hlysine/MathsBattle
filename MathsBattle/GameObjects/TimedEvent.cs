@@ -57,6 +57,7 @@ namespace MathsBattle.GameObjects
 
         ~TimedEvent()
         {
+            T.Stop();
             T.Dispose();
             OnFinished = null;
             OnTick = null;
