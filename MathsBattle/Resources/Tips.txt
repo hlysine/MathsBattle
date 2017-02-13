@@ -3,7 +3,7 @@ You can only use cards with a white arrow on it.
 You can choose the length of game time in game settings.
 You get 20 MP when you answered a question correctly.
 The game doesn't end when you defeat an opponent. Try to defeat as many as you can!
-The opponent you face will be stronger and stronger as you more and more of them.
+The opponent you face will be stronger and stronger as you defeat more and more of them.
 You get 1/3 of the opponent's max HP when you defeat it.
 The CD of the opponent decreases as you answer a question or use a card.
 The opponent will attack you when it's CD reaches 0. Then, the CD will be refilled.
