@@ -274,7 +274,7 @@
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Primary = false;
-            this.materialLabel2.Size = new System.Drawing.Size(54, 22);
+            this.materialLabel2.Size = new System.Drawing.Size(52, 23);
             this.materialLabel2.TabIndex = 0;
             this.materialLabel2.Text = "Tips :";
             // 
@@ -290,7 +290,7 @@
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Primary = true;
-            this.materialLabel1.Size = new System.Drawing.Size(274, 162);
+            this.materialLabel1.Size = new System.Drawing.Size(275, 162);
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "MATHS\r\nBATTLE";
             // 
@@ -418,7 +418,7 @@
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Primary = false;
-            this.materialLabel12.Size = new System.Drawing.Size(128, 24);
+            this.materialLabel12.Size = new System.Drawing.Size(133, 25);
             this.materialLabel12.TabIndex = 3;
             this.materialLabel12.Text = "Game Length";
             // 
@@ -434,7 +434,7 @@
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Primary = true;
-            this.materialLabel9.Size = new System.Drawing.Size(193, 33);
+            this.materialLabel9.Size = new System.Drawing.Size(192, 33);
             this.materialLabel9.TabIndex = 0;
             this.materialLabel9.Text = "Game Settings";
             // 
@@ -463,7 +463,7 @@
             this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBack.Name = "btnBack";
             this.btnBack.Primary = false;
-            this.btnBack.Size = new System.Drawing.Size(92, 32);
+            this.btnBack.Size = new System.Drawing.Size(90, 32);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Back";
             this.btnBack.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnBack_ClickAnimationFinished);
@@ -826,7 +826,7 @@
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Primary = false;
-            this.materialLabel7.Size = new System.Drawing.Size(23, 14);
+            this.materialLabel7.Size = new System.Drawing.Size(23, 15);
             this.materialLabel7.TabIndex = 10;
             this.materialLabel7.Text = "CD";
             this.materialLabel7.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -844,7 +844,7 @@
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Primary = false;
-            this.materialLabel8.Size = new System.Drawing.Size(23, 14);
+            this.materialLabel8.Size = new System.Drawing.Size(24, 15);
             this.materialLabel8.TabIndex = 9;
             this.materialLabel8.Text = "HP";
             this.materialLabel8.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -884,7 +884,7 @@
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Primary = false;
-            this.materialLabel6.Size = new System.Drawing.Size(25, 14);
+            this.materialLabel6.Size = new System.Drawing.Size(25, 15);
             this.materialLabel6.TabIndex = 6;
             this.materialLabel6.Text = "MP";
             // 
@@ -900,7 +900,7 @@
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Primary = false;
-            this.materialLabel5.Size = new System.Drawing.Size(23, 14);
+            this.materialLabel5.Size = new System.Drawing.Size(24, 15);
             this.materialLabel5.TabIndex = 5;
             this.materialLabel5.Text = "HP";
             // 
@@ -917,7 +917,7 @@
             this.lblOppName.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblOppName.Name = "lblOppName";
             this.lblOppName.Primary = false;
-            this.lblOppName.Size = new System.Drawing.Size(88, 18);
+            this.lblOppName.Size = new System.Drawing.Size(85, 19);
             this.lblOppName.TabIndex = 4;
             this.lblOppName.Text = "Opponent 1";
             this.lblOppName.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -934,7 +934,7 @@
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Primary = false;
-            this.materialLabel3.Size = new System.Drawing.Size(35, 18);
+            this.materialLabel3.Size = new System.Drawing.Size(35, 19);
             this.materialLabel3.TabIndex = 3;
             this.materialLabel3.Text = "You";
             // 
@@ -1114,7 +1114,7 @@
             this.lblExTime.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblExTime.Name = "lblExTime";
             this.lblExTime.Primary = false;
-            this.lblExTime.Size = new System.Drawing.Size(44, 18);
+            this.lblExTime.Size = new System.Drawing.Size(45, 19);
             this.lblExTime.TabIndex = 5;
             this.lblExTime.Text = "00:00";
             // 
@@ -1141,7 +1141,7 @@
             this.lblExScore.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblExScore.Name = "lblExScore";
             this.lblExScore.Primary = false;
-            this.lblExScore.Size = new System.Drawing.Size(38, 18);
+            this.lblExScore.Size = new System.Drawing.Size(39, 19);
             this.lblExScore.TabIndex = 3;
             this.lblExScore.Text = "0 / 0";
             // 
@@ -1157,7 +1157,7 @@
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
             this.materialLabel15.Primary = false;
-            this.materialLabel15.Size = new System.Drawing.Size(60, 22);
+            this.materialLabel15.Size = new System.Drawing.Size(59, 23);
             this.materialLabel15.TabIndex = 2;
             this.materialLabel15.Text = "Time: ";
             // 
@@ -1173,7 +1173,7 @@
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
             this.materialLabel14.Primary = false;
-            this.materialLabel14.Size = new System.Drawing.Size(64, 22);
+            this.materialLabel14.Size = new System.Drawing.Size(64, 23);
             this.materialLabel14.TabIndex = 1;
             this.materialLabel14.Text = "Score: ";
             // 
@@ -1189,7 +1189,7 @@
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Primary = false;
-            this.materialLabel4.Size = new System.Drawing.Size(208, 33);
+            this.materialLabel4.Size = new System.Drawing.Size(207, 33);
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Drilling Exercise";
             // 
