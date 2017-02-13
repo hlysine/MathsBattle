@@ -8,5 +8,9 @@ namespace MathsBattle.GameObjects.Question
 {
     public class Triangle : QuestionGenerator
     {
+        public override Question Generate(int? seed = default(int?))
+        {
+            throw new NotImplementedException();
+        }
     }
 }

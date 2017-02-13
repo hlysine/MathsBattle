@@ -511,9 +511,9 @@ namespace MathsBattle
             meMP.Minimum = 0;
             meMP.Value = me.MP;
             lblMeMP.Text = me.MP.ToString() + "/" + me.MaxMP.ToString();
-            for (int i = 0; i < 5; i++)
+            for (int i = 1; i < 5; i++)
             {
-                MaterialSmallCard sm = panelBattle.Controls["card" + (i + 1).ToString()] as MaterialSmallCard;
+                MaterialSmallCard sm = panelBattle.Controls["card" + i.ToString()] as MaterialSmallCard;
                 if (sm != null)
                 {
                     Card c = sm.Tag as Card;
@@ -548,6 +548,8 @@ namespace MathsBattle
                 updateCard();
                 RefreshMeEffects();
                 RefreshOppEffects();
+                Me_OnValueChange(me);
+                Opp_OnValueChange(opp);
                 oppCard.AutoExpand = false;
                 timerOppRecentCard.Start();
             }
@@ -599,6 +601,7 @@ namespace MathsBattle
                 updateCard();
                 RefreshMeEffects();
                 RefreshOppEffects();
+                Me_OnValueChange(me);
                 Opp_OnValueChange(opp);
                 meCard.AutoExpand = false;
                 timerMeRecentCard.Start();
