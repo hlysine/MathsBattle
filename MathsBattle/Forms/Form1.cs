@@ -16,6 +16,8 @@ using MathsBattle.GameObjects.CustomControls;
 using MathsBattle.GameObjects.Question;
 using MaterialSkin.ControlRenderExtension;
 using System.Reflection;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace MathsBattle
 {
@@ -27,6 +29,9 @@ namespace MathsBattle
         const int actionBarHeight = 24;
         const int statusBarHeight = 40;
         const bool NO_BG = false;
+        GameSettings gameSettings;
+        string folder;
+        string specificFolder;
 
         //variables for start screen
         string[] tips = MathsBattle.Properties.Resources.Tips.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -54,9 +59,27 @@ namespace MathsBattle
             ((Control)this).SuspendDrawing();
             InitializeComponent();
 
+            folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            specificFolder = Path.Combine(folder, "MathsBattle");
+
+            if (!Directory.Exists(specificFolder))
+            {
+                Directory.CreateDirectory(specificFolder);
+            }
+            if (File.Exists(Path.Combine(specificFolder, "Settings.xml")))
+            {
+                gameSettings = DeserializeObject<GameSettings>(Path.Combine(specificFolder, "Settings.xml"));
+            }
+            else
+            {
+                gameSettings = new GameSettings();
+                gameSettings.ResetDefault();
+                string str = SerializeObject<GameSettings>(gameSettings);
+                File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
+            }
 
             SkinManager.AddFormToManage(this);
-            SkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            SkinManager.Theme = gameSettings.DarkTheme ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.Blue200, TextShade.WHITE);
             if (NO_BG)
             {
@@ -99,7 +122,11 @@ namespace MathsBattle
             Random rnd = new Random((int)DateTime.Now.Ticks);
             tipsNo = rnd.Next(0, tips.Count());
             lblTips.Text = tips[tipsNo];
-            //screenBattle.BackgroundImage = null;
+            if (!gameSettings.BattleExerciseBackgroundImage)
+            {
+                screenBattle.BackgroundImage = null;
+                screenExercise.BackgroundImage = null;
+            }
             panelBattle.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelTips.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelRightDock.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
@@ -132,6 +159,26 @@ namespace MathsBattle
             }
             panelExQuestionAlign.BackColor = SkinManager.GetApplicationBackgroundColor();
             ((Control)this).ResumeDrawing();
+        }
+        static string SerializeObject<T>(T toSerialize)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, toSerialize);
+                return textWriter.ToString();
+            }
+        }
+        static T DeserializeObject<T>(string filename)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            T ret = default(T);
+            using (FileStream reader = new FileStream(filename, FileMode.Open))
+            {
+                ret = (T)xmlSerializer.Deserialize(reader);
+            }
+            return ret;
         }
         private bool SupportsTransparentBackColor(Control control)
         {
@@ -723,5 +770,63 @@ namespace MathsBattle
             SwitchScreen(screenStart);
         }
         #endregion
+
+        private void btnSettings_ClickAnimationFinished(object sender)
+        {
+            toggleShowBGImage.Checked = gameSettings.BattleExerciseBackgroundImage;
+            toggleUseDarkTheme.Checked = gameSettings.BattleExerciseBackgroundImage;
+            SwitchScreen(screenSettings);
+        }
+
+        private void btnSettingsBack_ClickAnimationFinished(object sender)
+        {
+            string str = SerializeObject<GameSettings>(gameSettings);
+            File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
+            SwitchScreen(screenStart);
+        }
+
+        private void toggleShowBGImage_CheckedChanged(object sender, EventArgs e)
+        {
+            gameSettings.BattleExerciseBackgroundImage = toggleShowBGImage.Checked;
+        }
+
+        private void toggleUseDarkTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
+        }
+    }
+
+    public class GameSettings
+    {
+        private bool _BattleExerciseBackgroundImage;
+        public bool BattleExerciseBackgroundImage
+        {
+            get
+            {
+                return _BattleExerciseBackgroundImage;
+            }
+            set
+            {
+                _BattleExerciseBackgroundImage = value;
+            }
+        }
+        private bool _DarkTheme;
+        public bool DarkTheme
+        {
+            get
+            {
+                return _DarkTheme;
+            }
+            set
+            {
+                _DarkTheme = value;
+            }
+        }
+
+        public void ResetDefault()
+        {
+            _BattleExerciseBackgroundImage = true;
+            _DarkTheme = false;
+        }
     }
 }

@@ -95,6 +95,7 @@ namespace MaterialSkin.Controls
             }
         }
 
+        [Browsable(true)]
         public override string Text
         {
             get { return base.Text; }

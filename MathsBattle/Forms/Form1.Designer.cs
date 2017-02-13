@@ -33,6 +33,7 @@
             this.Screens = new MaterialSkin.Controls.MaterialTabControl();
             this.screenStart = new MaterialSkin.Controls.MaterialTabPage();
             this.panelRightDock = new MaterialSkin.Controls.MaterialPanel();
+            this.btnSettings = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnStartBattle = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnExercise = new MaterialSkin.Controls.MaterialFlatButton();
             this.panelTips = new MaterialSkin.Controls.MaterialPanel();
@@ -98,6 +99,14 @@
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.screenSettings = new MaterialSkin.Controls.MaterialTabPage();
+            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            this.toggleUseDarkTheme = new MaterialSkin.Controls.MaterialToggle();
+            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
+            this.toggleShowBGImage = new MaterialSkin.Controls.MaterialToggle();
+            this.panelSettingsFooter = new MaterialSkin.Controls.MaterialPanel();
+            this.btnSettingsBack = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.timerBattle = new System.Windows.Forms.Timer(this.components);
             this.timerMeRecentCard = new System.Windows.Forms.Timer(this.components);
             this.timerOppRecentCard = new System.Windows.Forms.Timer(this.components);
@@ -116,6 +125,8 @@
             this.screenGameOver.SuspendLayout();
             this.panelGameOverFooter.SuspendLayout();
             this.screenExercise.SuspendLayout();
+            this.screenSettings.SuspendLayout();
+            this.panelSettingsFooter.SuspendLayout();
             this.SuspendLayout();
             // 
             // Screens
@@ -125,6 +136,7 @@
             this.Screens.Controls.Add(this.screenBattle);
             this.Screens.Controls.Add(this.screenGameOver);
             this.Screens.Controls.Add(this.screenExercise);
+            this.Screens.Controls.Add(this.screenSettings);
             this.Screens.Depth = 0;
             this.Screens.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Screens.Location = new System.Drawing.Point(0, 24);
@@ -153,6 +165,7 @@
             // 
             // panelRightDock
             // 
+            this.panelRightDock.Controls.Add(this.btnSettings);
             this.panelRightDock.Controls.Add(this.btnStartBattle);
             this.panelRightDock.Controls.Add(this.btnExercise);
             this.panelRightDock.Depth = 5;
@@ -162,6 +175,24 @@
             this.panelRightDock.Name = "panelRightDock";
             this.panelRightDock.Size = new System.Drawing.Size(190, 496);
             this.panelRightDock.TabIndex = 5;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSettings.Depth = 0;
+            this.btnSettings.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnSettings.FontSize = 9;
+            this.btnSettings.Icon = null;
+            this.btnSettings.Location = new System.Drawing.Point(69, 351);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSettings.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Primary = false;
+            this.btnSettings.Size = new System.Drawing.Size(113, 35);
+            this.btnSettings.TabIndex = 4;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnSettings_ClickAnimationFinished);
             // 
             // btnStartBattle
             // 
@@ -274,7 +305,7 @@
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Primary = false;
-            this.materialLabel2.Size = new System.Drawing.Size(52, 23);
+            this.materialLabel2.Size = new System.Drawing.Size(54, 22);
             this.materialLabel2.TabIndex = 0;
             this.materialLabel2.Text = "Tips :";
             // 
@@ -290,7 +321,7 @@
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Primary = true;
-            this.materialLabel1.Size = new System.Drawing.Size(275, 162);
+            this.materialLabel1.Size = new System.Drawing.Size(274, 162);
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "MATHS\r\nBATTLE";
             // 
@@ -418,7 +449,7 @@
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Primary = false;
-            this.materialLabel12.Size = new System.Drawing.Size(133, 25);
+            this.materialLabel12.Size = new System.Drawing.Size(128, 24);
             this.materialLabel12.TabIndex = 3;
             this.materialLabel12.Text = "Game Length";
             // 
@@ -434,7 +465,7 @@
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Primary = true;
-            this.materialLabel9.Size = new System.Drawing.Size(192, 33);
+            this.materialLabel9.Size = new System.Drawing.Size(193, 33);
             this.materialLabel9.TabIndex = 0;
             this.materialLabel9.Text = "Game Settings";
             // 
@@ -826,7 +857,7 @@
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Primary = false;
-            this.materialLabel7.Size = new System.Drawing.Size(23, 15);
+            this.materialLabel7.Size = new System.Drawing.Size(23, 14);
             this.materialLabel7.TabIndex = 10;
             this.materialLabel7.Text = "CD";
             this.materialLabel7.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -844,7 +875,7 @@
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Primary = false;
-            this.materialLabel8.Size = new System.Drawing.Size(24, 15);
+            this.materialLabel8.Size = new System.Drawing.Size(23, 14);
             this.materialLabel8.TabIndex = 9;
             this.materialLabel8.Text = "HP";
             this.materialLabel8.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -884,7 +915,7 @@
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Primary = false;
-            this.materialLabel6.Size = new System.Drawing.Size(25, 15);
+            this.materialLabel6.Size = new System.Drawing.Size(25, 14);
             this.materialLabel6.TabIndex = 6;
             this.materialLabel6.Text = "MP";
             // 
@@ -900,7 +931,7 @@
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Primary = false;
-            this.materialLabel5.Size = new System.Drawing.Size(24, 15);
+            this.materialLabel5.Size = new System.Drawing.Size(23, 14);
             this.materialLabel5.TabIndex = 5;
             this.materialLabel5.Text = "HP";
             // 
@@ -917,7 +948,7 @@
             this.lblOppName.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblOppName.Name = "lblOppName";
             this.lblOppName.Primary = false;
-            this.lblOppName.Size = new System.Drawing.Size(85, 19);
+            this.lblOppName.Size = new System.Drawing.Size(88, 18);
             this.lblOppName.TabIndex = 4;
             this.lblOppName.Text = "Opponent 1";
             this.lblOppName.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -934,7 +965,7 @@
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Primary = false;
-            this.materialLabel3.Size = new System.Drawing.Size(35, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(35, 18);
             this.materialLabel3.TabIndex = 3;
             this.materialLabel3.Text = "You";
             // 
@@ -1114,7 +1145,7 @@
             this.lblExTime.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblExTime.Name = "lblExTime";
             this.lblExTime.Primary = false;
-            this.lblExTime.Size = new System.Drawing.Size(45, 19);
+            this.lblExTime.Size = new System.Drawing.Size(44, 18);
             this.lblExTime.TabIndex = 5;
             this.lblExTime.Text = "00:00";
             // 
@@ -1141,7 +1172,7 @@
             this.lblExScore.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblExScore.Name = "lblExScore";
             this.lblExScore.Primary = false;
-            this.lblExScore.Size = new System.Drawing.Size(39, 19);
+            this.lblExScore.Size = new System.Drawing.Size(38, 18);
             this.lblExScore.TabIndex = 3;
             this.lblExScore.Text = "0 / 0";
             // 
@@ -1157,7 +1188,7 @@
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
             this.materialLabel15.Primary = false;
-            this.materialLabel15.Size = new System.Drawing.Size(59, 23);
+            this.materialLabel15.Size = new System.Drawing.Size(60, 22);
             this.materialLabel15.TabIndex = 2;
             this.materialLabel15.Text = "Time: ";
             // 
@@ -1173,7 +1204,7 @@
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
             this.materialLabel14.Primary = false;
-            this.materialLabel14.Size = new System.Drawing.Size(64, 23);
+            this.materialLabel14.Size = new System.Drawing.Size(64, 22);
             this.materialLabel14.TabIndex = 1;
             this.materialLabel14.Text = "Score: ";
             // 
@@ -1189,9 +1220,139 @@
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Primary = false;
-            this.materialLabel4.Size = new System.Drawing.Size(207, 33);
+            this.materialLabel4.Size = new System.Drawing.Size(208, 33);
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Drilling Exercise";
+            // 
+            // screenSettings
+            // 
+            this.screenSettings.Controls.Add(this.materialLabel16);
+            this.screenSettings.Controls.Add(this.toggleUseDarkTheme);
+            this.screenSettings.Controls.Add(this.materialLabel11);
+            this.screenSettings.Controls.Add(this.toggleShowBGImage);
+            this.screenSettings.Controls.Add(this.panelSettingsFooter);
+            this.screenSettings.Controls.Add(this.materialLabel10);
+            this.screenSettings.Depth = 0;
+            this.screenSettings.Location = new System.Drawing.Point(4, 22);
+            this.screenSettings.MouseState = MaterialSkin.MouseState.HOVER;
+            this.screenSettings.Name = "screenSettings";
+            this.screenSettings.Padding = new System.Windows.Forms.Padding(8);
+            this.screenSettings.Size = new System.Drawing.Size(863, 512);
+            this.screenSettings.TabIndex = 5;
+            this.screenSettings.Text = "Settings";
+            this.screenSettings.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel16
+            // 
+            this.materialLabel16.AutoSize = true;
+            this.materialLabel16.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel16.Depth = 0;
+            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel16.FontSize = 11;
+            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel16.Location = new System.Drawing.Point(39, 172);
+            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel16.Name = "materialLabel16";
+            this.materialLabel16.Primary = false;
+            this.materialLabel16.Size = new System.Drawing.Size(120, 18);
+            this.materialLabel16.TabIndex = 6;
+            this.materialLabel16.Text = "Use Dark Theme";
+            // 
+            // toggleUseDarkTheme
+            // 
+            this.toggleUseDarkTheme.BackColor = System.Drawing.Color.Transparent;
+            this.toggleUseDarkTheme.Checked = false;
+            this.toggleUseDarkTheme.Depth = 0;
+            this.toggleUseDarkTheme.Font = new System.Drawing.Font("Roboto", 10F);
+            this.toggleUseDarkTheme.Location = new System.Drawing.Point(416, 161);
+            this.toggleUseDarkTheme.Margin = new System.Windows.Forms.Padding(0);
+            this.toggleUseDarkTheme.MouseLocation = new System.Drawing.Point(0, 0);
+            this.toggleUseDarkTheme.MouseState = MaterialSkin.MouseState.HOVER;
+            this.toggleUseDarkTheme.Name = "toggleUseDarkTheme";
+            this.toggleUseDarkTheme.Ripple = true;
+            this.toggleUseDarkTheme.Size = new System.Drawing.Size(67, 40);
+            this.toggleUseDarkTheme.TabIndex = 5;
+            this.toggleUseDarkTheme.Text = "Dark Theme";
+            this.toggleUseDarkTheme.CheckedChanged += new MaterialSkin.Controls.MaterialToggle.CheckedChangedEventHandler(this.toggleUseDarkTheme_CheckedChanged);
+            // 
+            // materialLabel11
+            // 
+            this.materialLabel11.AutoSize = true;
+            this.materialLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel11.Depth = 0;
+            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel11.FontSize = 11;
+            this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel11.Location = new System.Drawing.Point(39, 113);
+            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel11.Name = "materialLabel11";
+            this.materialLabel11.Primary = false;
+            this.materialLabel11.Size = new System.Drawing.Size(363, 18);
+            this.materialLabel11.TabIndex = 4;
+            this.materialLabel11.Text = "Show Background Image during exercise and battle";
+            // 
+            // toggleShowBGImage
+            // 
+            this.toggleShowBGImage.BackColor = System.Drawing.Color.Transparent;
+            this.toggleShowBGImage.Checked = false;
+            this.toggleShowBGImage.Depth = 0;
+            this.toggleShowBGImage.Font = new System.Drawing.Font("Roboto", 10F);
+            this.toggleShowBGImage.Location = new System.Drawing.Point(416, 102);
+            this.toggleShowBGImage.Margin = new System.Windows.Forms.Padding(0);
+            this.toggleShowBGImage.MouseLocation = new System.Drawing.Point(0, 0);
+            this.toggleShowBGImage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.toggleShowBGImage.Name = "toggleShowBGImage";
+            this.toggleShowBGImage.Ripple = true;
+            this.toggleShowBGImage.Size = new System.Drawing.Size(67, 40);
+            this.toggleShowBGImage.TabIndex = 3;
+            this.toggleShowBGImage.Text = "Show BG Image";
+            this.toggleShowBGImage.CheckedChanged += new MaterialSkin.Controls.MaterialToggle.CheckedChangedEventHandler(this.toggleShowBGImage_CheckedChanged);
+            // 
+            // panelSettingsFooter
+            // 
+            this.panelSettingsFooter.Controls.Add(this.btnSettingsBack);
+            this.panelSettingsFooter.Depth = 5;
+            this.panelSettingsFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelSettingsFooter.Location = new System.Drawing.Point(8, 456);
+            this.panelSettingsFooter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panelSettingsFooter.Name = "panelSettingsFooter";
+            this.panelSettingsFooter.Padding = new System.Windows.Forms.Padding(8);
+            this.panelSettingsFooter.Size = new System.Drawing.Size(847, 48);
+            this.panelSettingsFooter.TabIndex = 2;
+            // 
+            // btnSettingsBack
+            // 
+            this.btnSettingsBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSettingsBack.Depth = 0;
+            this.btnSettingsBack.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSettingsBack.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnSettingsBack.FontSize = 9;
+            this.btnSettingsBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
+            this.btnSettingsBack.Location = new System.Drawing.Point(8, 8);
+            this.btnSettingsBack.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSettingsBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSettingsBack.Name = "btnSettingsBack";
+            this.btnSettingsBack.Primary = false;
+            this.btnSettingsBack.Size = new System.Drawing.Size(90, 32);
+            this.btnSettingsBack.TabIndex = 0;
+            this.btnSettingsBack.Text = "Back";
+            this.btnSettingsBack.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnSettingsBack_ClickAnimationFinished);
+            // 
+            // materialLabel10
+            // 
+            this.materialLabel10.AutoSize = true;
+            this.materialLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel10.Depth = 0;
+            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 20F);
+            this.materialLabel10.FontSize = 20;
+            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel10.Location = new System.Drawing.Point(36, 30);
+            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel10.Name = "materialLabel10";
+            this.materialLabel10.Primary = false;
+            this.materialLabel10.Size = new System.Drawing.Size(115, 33);
+            this.materialLabel10.TabIndex = 1;
+            this.materialLabel10.Text = "Settings";
             // 
             // timerBattle
             // 
@@ -1248,6 +1409,9 @@
             this.panelGameOverFooter.ResumeLayout(false);
             this.screenExercise.ResumeLayout(false);
             this.screenExercise.PerformLayout();
+            this.screenSettings.ResumeLayout(false);
+            this.screenSettings.PerformLayout();
+            this.panelSettingsFooter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1327,6 +1491,15 @@
         private MaterialSkin.Controls.MaterialLabel lblTips;
         private MaterialSkin.Controls.MaterialFlatButton btnNextTip;
         private MaterialSkin.Controls.MaterialLabel lblExMark;
+        private MaterialSkin.Controls.MaterialFlatButton btnSettings;
+        private MaterialSkin.Controls.MaterialTabPage screenSettings;
+        private MaterialSkin.Controls.MaterialLabel materialLabel16;
+        private MaterialSkin.Controls.MaterialToggle toggleUseDarkTheme;
+        private MaterialSkin.Controls.MaterialLabel materialLabel11;
+        private MaterialSkin.Controls.MaterialToggle toggleShowBGImage;
+        private MaterialSkin.Controls.MaterialPanel panelSettingsFooter;
+        private MaterialSkin.Controls.MaterialFlatButton btnSettingsBack;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
     }
 }
 
