@@ -26,12 +26,12 @@ namespace MathsBattle
     {
         #region Variables
         //variables for form1
-        const int actionBarHeight = 24;
-        const int statusBarHeight = 40;
         const bool NO_BG = false;
         GameSettings gameSettings;
         string folder;
         string specificFolder;
+        const int ActionBarHeight = 40;
+        const int StatusBarHeight = 24;
 
         //variables for start screen
         string[] tips = MathsBattle.Properties.Resources.Tips.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -73,7 +73,7 @@ namespace MathsBattle
             else
             {
                 gameSettings = new GameSettings();
-                gameSettings.ResetDefault();
+                gameSettings.ResetSettings();
                 string str = SerializeObject<GameSettings>(gameSettings);
                 File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
             }
@@ -130,8 +130,6 @@ namespace MathsBattle
             panelBattle.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelTips.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelRightDock.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
-            panelOppFooter.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
-            panelGameOverFooter.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelQuestionAlign.BackColor = Color.Transparent;
             foreach (Control c in panelBattle.Controls)
             {
@@ -190,11 +188,11 @@ namespace MathsBattle
             Size = new Size(871, 562);
             if (Screens.SelectedTab == screenStart)
             {
-                Screens.Height = Height - actionBarHeight;
+                Screens.Height = Height - ActionBarHeight;
             }
             else
             {
-                Screens.Height = Height - actionBarHeight - statusBarHeight;
+                Screens.Height = Height - ActionBarHeight - StatusBarHeight;
             }
         }
         private void SwitchScreen(TabPage t)
@@ -203,11 +201,11 @@ namespace MathsBattle
             Screens.SelectedTab = t;
             if (Screens.SelectedTab == screenStart)
             {
-                Screens.Height = Height - actionBarHeight;
+                Screens.Height = Height - ActionBarHeight;
             }
             else
             {
-                Screens.Height = Height - actionBarHeight - statusBarHeight;
+                Screens.Height = Height - ActionBarHeight - StatusBarHeight;
             }
             ((Control)this).ResumeDrawing();
         }
@@ -242,113 +240,19 @@ namespace MathsBattle
         private void btnBack_ClickAnimationFinished(object sender)
         {
             SwitchScreen(screenStart);
-            ClearSettings();
-        }
-        private void ClearSettings()
-        {
-            rb15Minute.Checked = false;
-            rb10Minute.Checked = false;
-            rb5Minute.Checked = false;
-            rb2Minute.Checked = false;
-        }
-        private void btnStartGame_ClickAnimationFinished(object sender)
-        {
-            if (GameMode == GameStartMode.battle)
-            {
-                ResetBattle();
-                if (rb2Minute.Checked)
-                {
-                    battleTick = 120;
-                }
-                else if (rb5Minute.Checked)
-                {
-                    battleTick = 300;
-                }
-                else if (rb10Minute.Checked)
-                {
-                    battleTick = 600;
-                }
-                else if (rb15Minute.Checked)
-                {
-                    battleTick = 900;
-                }
-                if (battleTick <= 0)
-                {
-                    return;
-                }
-
-                oppLevel++;
-                List<Card> CS = new List<Card>();
-                CS.Add(new NormalAttack());
-                CS.Add(new MegaAttack());
-                CS.Add(new ContinuedAttack());
-                CS.Add(new ContinuedHealing());
-                List<Card> CS2 = new List<Card>();
-                CS2.Add(new NormalAttack());
-                me = new GameObjects.Player(4, 100, 0, 100, 100, "You", CS);
-                opp = new GameObjects.Player(1, 40, 3, 40, 3, "Opponent", CS2);
-                SetNewOpp(oppLevel);
-                me.OnValueChange += Me_OnValueChange;
-                me.OnEffectsChange += Me_OnEffectsChange;
-                opp.OnEffectsChange += Opp_OnEffectsChange;
-                opp.OnValueChange += Opp_OnValueChange;
-                opp.OnDead += Opp_OnDead;
-                me.OnDead += Me_OnDead;
-
-                newQuestion();
-                newQuestion();
-                me.FillActiveCard();
-                updateCard();
-                Opp_OnValueChange(opp);
-                Me_OnValueChange(me);
-                timerBattle.Start();
-
-                SwitchScreen(screenBattle);
-
-                lblKillBanner.Text = "Game Start!";
-                lblKillBanner.Show();
-                timerKillBanner.Start();
-            }
-            else if (GameMode == GameStartMode.exercise)
-            {
-                ResetExercise();
-                if (rb2Minute.Checked)
-                {
-                    exerciseTick = 120;
-                }
-                else if (rb5Minute.Checked)
-                {
-                    exerciseTick = 300;
-                }
-                else if (rb10Minute.Checked)
-                {
-                    exerciseTick = 600;
-                }
-                else if (rb15Minute.Checked)
-                {
-                    exerciseTick = 900;
-                }
-                if (exerciseTick <= 0)
-                {
-                    return;
-                }
-                ExCountdown.Maximum = exerciseTick;
-                newExQuestion();
-                newExQuestion();
-                newExQuestion();
-                timerExercise.Start();
-                SwitchScreen(screenExercise);
-            }
-            ClearSettings();
         }
         #endregion
 
         #region screenBattle
         private void Me_OnDead(Player sender)
         {
-            ResetBattle();
             lblGameResult.Text = "You Died!";
+            if (oppLevel > gameSettings.BattleHighScore) { gameSettings.BattleHighScore = oppLevel; }
+            lblGameOverScore.Text = "Score: " + oppLevel.ToString();
+            lblGameOverHighscore.Text = "Highscore: " + gameSettings.BattleHighScore.ToString();
             SwitchScreen(screenGameOver);
+            ResetBattle();
+            timerGameOverStats.Start();
         }
         private void ResetBattle()
         {
@@ -393,7 +297,9 @@ namespace MathsBattle
             lblMeMP.Text = "0/100";
             lblOppHP.Text = "0/100";
             lblOppMP.Text = "0/100";
-            panelCardInfo.Visible = false;
+            panelCardInfo.Hide();
+            lblGameOverScore.Hide();
+            lblGameOverHighscore.Hide();
             lblCardInfo.Text = "Long Card Info";
             me = null;
             opp = null;
@@ -589,8 +495,8 @@ namespace MathsBattle
                 oppCard.Info = "Cost: " + c.Cost.ToString();
                 oppCard.Show();
                 c.Action(opp, me);
-                opp.ActiveCard.Remove(c);
                 if (opp == null) return;
+                opp.ActiveCard.Remove(c);
                 opp.FillActiveCard();
                 updateCard();
                 RefreshMeEffects();
@@ -641,8 +547,8 @@ namespace MathsBattle
                 meCard.Show();
                 me.MP -= c.Cost;
                 c.Action(me, opp);
-                me.ActiveCard.Remove(c);
                 if (me == null) return;
+                me.ActiveCard.Remove(c);
                 opp.MP -= 1;
                 me.FillActiveCard();
                 updateCard();
@@ -665,9 +571,13 @@ namespace MathsBattle
         {
             if (battleTick <= 0)
             {
-                ResetBattle();
                 lblGameResult.Text = "Time's Up!";
+                if (oppLevel > gameSettings.BattleHighScore) { gameSettings.BattleHighScore = oppLevel; }
+                lblGameOverScore.Text = "Score: " + oppLevel.ToString();
+                lblGameOverHighscore.Text = "Highscore: " + gameSettings.BattleHighScore.ToString();
                 SwitchScreen(screenGameOver);
+                ResetBattle();
+                timerGameOverStats.Start();
                 return;
             }
             battleTick -= 1;
@@ -704,9 +614,13 @@ namespace MathsBattle
         {
             if (exerciseTick <= 0)
             {
-                ResetExercise();
                 lblGameResult.Text = "Time's Up!";
+                if (exScore > gameSettings.ExerciseHighScore) { gameSettings.ExerciseHighScore = exScore; }
+                lblGameOverScore.Text = "Score: " + exScore.ToString();
+                lblGameOverHighscore.Text = "Highscore: " + gameSettings.ExerciseHighScore.ToString();
                 SwitchScreen(screenGameOver);
+                ResetExercise();
+                timerGameOverStats.Start();
                 return;
             }
             exerciseTick -= 1;
@@ -757,6 +671,8 @@ namespace MathsBattle
             exScore = 0;
             exQuestionNo = 1;
             exQuestionCount = 0;
+            lblGameOverScore.Hide();
+            lblGameOverHighscore.Hide();
             lblExTime.Text = "00:00";
             lblExMark.Text = "0%";
             lblExScore.Text = "0 / 0";
@@ -794,6 +710,109 @@ namespace MathsBattle
         {
             gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
         }
+
+        private void rbMinute_ClickAnimationFinished(object sender)
+        {
+            if (GameMode == GameStartMode.battle)
+            {
+                ResetBattle();
+                if (((MaterialFlatButton)sender).Text == "2 Minutes")
+                {
+                    battleTick = 120;
+                }
+                else if (((MaterialFlatButton)sender).Text == "5 Minutes")
+                {
+                    battleTick = 300;
+                }
+                else if (((MaterialFlatButton)sender).Text == "10 Minutes")
+                {
+                    battleTick = 600;
+                }
+                else if (((MaterialFlatButton)sender).Text == "15 Minutes")
+                {
+                    battleTick = 900;
+                }
+                if (battleTick <= 0)
+                {
+                    return;
+                }
+
+                oppLevel++;
+                List<Card> CS = new List<Card>();
+                CS.Add(new NormalAttack());
+                CS.Add(new MegaAttack());
+                CS.Add(new ContinuedAttack());
+                CS.Add(new ContinuedHealing());
+                List<Card> CS2 = new List<Card>();
+                CS2.Add(new NormalAttack());
+                me = new GameObjects.Player(4, 100, 0, 100, 100, "You", CS);
+                opp = new GameObjects.Player(1, 40, 3, 40, 3, "Opponent", CS2);
+                SetNewOpp(oppLevel);
+                me.OnValueChange += Me_OnValueChange;
+                me.OnEffectsChange += Me_OnEffectsChange;
+                opp.OnEffectsChange += Opp_OnEffectsChange;
+                opp.OnValueChange += Opp_OnValueChange;
+                opp.OnDead += Opp_OnDead;
+                me.OnDead += Me_OnDead;
+
+                newQuestion();
+                newQuestion();
+                me.FillActiveCard();
+                updateCard();
+                Opp_OnValueChange(opp);
+                Me_OnValueChange(me);
+                timerBattle.Start();
+
+                SwitchScreen(screenBattle);
+
+                lblKillBanner.Text = "Game Start!";
+                lblKillBanner.Show();
+                timerKillBanner.Start();
+            }
+            else if (GameMode == GameStartMode.exercise)
+            {
+                ResetExercise();
+                if (((MaterialFlatButton)sender).Text == "2 Minutes")
+                {
+                    exerciseTick = 120;
+                }
+                else if (((MaterialFlatButton)sender).Text == "5 Minutes")
+                {
+                    exerciseTick = 300;
+                }
+                else if (((MaterialFlatButton)sender).Text == "10 Minutes")
+                {
+                    exerciseTick = 600;
+                }
+                else if (((MaterialFlatButton)sender).Text == "15 Minutes")
+                {
+                    exerciseTick = 900;
+                }
+                if (exerciseTick <= 0)
+                {
+                    return;
+                }
+                ExCountdown.Maximum = exerciseTick;
+                newExQuestion();
+                newExQuestion();
+                newExQuestion();
+                timerExercise.Start();
+                SwitchScreen(screenExercise);
+            }
+        }
+
+        private void timerGameOverStats_Tick(object sender, EventArgs e)
+        {
+            if (lblGameOverScore.Visible)
+            {
+                lblGameOverHighscore.Show();
+                timerGameOverStats.Stop();
+            }
+            else
+            {
+                lblGameOverScore.Show();
+            }
+        }
     }
 
     public class GameSettings
@@ -822,8 +841,31 @@ namespace MathsBattle
                 _DarkTheme = value;
             }
         }
-
-        public void ResetDefault()
+        private int _BattleHighScore;
+        public int BattleHighScore
+        {
+            set
+            {
+                _BattleHighScore = value;
+            }
+            get
+            {
+                return _BattleHighScore;
+            }
+        }
+        private int _ExerciseHighScore;
+        public int ExerciseHighScore
+        {
+            set
+            {
+                _ExerciseHighScore = value;
+            }
+            get
+            {
+                return _ExerciseHighScore;
+            }
+        }
+        public void ResetSettings()
         {
             _BattleExerciseBackgroundImage = true;
             _DarkTheme = false;
