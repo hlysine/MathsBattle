@@ -78,9 +78,10 @@
     <Compile Include="GameObjects\Question\EquationInOneUnknown.cs" />
     <Compile Include="GameObjects\Question\LinearEquationInTwoUnknown.cs" />
     <Compile Include="GameObjects\Question\Question.cs" />
+    <Compile Include="GameObjects\Question\PercentageChange.cs" />
     <Compile Include="GameObjects\Question\QuestionTemplate.cs" />
     <Compile Include="GameObjects\Question\SimplePercentage.cs" />
-    <Compile Include="GameObjects\Question\Triangle.cs" />
+    <Compile Include="GameObjects\Question\TriangleInequality.cs" />
     <Compile Include="GameObjects\TimedEvent.cs" />
     <Compile Include="MaterialSkin\Animations\AnimationDirection.cs" />
     <Compile Include="MaterialSkin\Animations\AnimationManager.cs" />

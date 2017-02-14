@@ -83,18 +83,18 @@ namespace MathsBattle
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.Blue200, TextShade.WHITE);
             if (NO_BG)
             {
-#pragma warning disable CS0162 // 检测到无法访问的代码
+#pragma warning disable CS0162
                 foreach (TabPage tb in Screens.TabPages)
-#pragma warning restore CS0162 // 检测到无法访问的代码
+#pragma warning restore CS0162
                 {
                     tb.BackgroundImage = null;
                 }
             }
             else
             {
-#pragma warning disable CS0162 // 检测到无法访问的代码
+#pragma warning disable CS0162
                 if (SkinManager.Theme == MaterialSkinManager.Themes.DARK)
-#pragma warning restore CS0162 // 检测到无法访问的代码
+#pragma warning restore CS0162
                 {
                     foreach (TabPage tb in Screens.TabPages)
                     {
@@ -222,6 +222,12 @@ namespace MathsBattle
             GameMode = GameStartMode.exercise;
             SwitchScreen(screenGameSettings);
         }
+        private void btnSettings_ClickAnimationFinished(object sender)
+        {
+            toggleShowBGImage.Checked = gameSettings.BattleExerciseBackgroundImage;
+            toggleUseDarkTheme.Checked = gameSettings.BattleExerciseBackgroundImage;
+            SwitchScreen(screenSettings);
+        }
         private void btnNextTip_Click(object sender, EventArgs e)
         {
             tipsNo += 1;
@@ -240,6 +246,95 @@ namespace MathsBattle
         private void btnBack_ClickAnimationFinished(object sender)
         {
             SwitchScreen(screenStart);
+        }
+        private void rbMinute_ClickAnimationFinished(object sender)
+        {
+            if (GameMode == GameStartMode.battle)
+            {
+                ResetBattle();
+                if (((MaterialFlatButton)sender).Text == "2 Minutes")
+                {
+                    battleTick = 120;
+                }
+                else if (((MaterialFlatButton)sender).Text == "5 Minutes")
+                {
+                    battleTick = 300;
+                }
+                else if (((MaterialFlatButton)sender).Text == "10 Minutes")
+                {
+                    battleTick = 600;
+                }
+                else if (((MaterialFlatButton)sender).Text == "15 Minutes")
+                {
+                    battleTick = 900;
+                }
+                if (battleTick <= 0)
+                {
+                    return;
+                }
+
+                oppLevel++;
+                List<Card> CS = new List<Card>();
+                CS.Add(new NormalAttack());
+                CS.Add(new MegaAttack());
+                CS.Add(new ContinuedAttack());
+                CS.Add(new ContinuedHealing());
+                List<Card> CS2 = new List<Card>();
+                CS2.Add(new NormalAttack());
+                me = new GameObjects.Player(4, 100, 0, 100, 100, "You", CS);
+                opp = new GameObjects.Player(1, 40, 3, 40, 3, "Opponent", CS2);
+                SetNewOpp(oppLevel);
+                me.OnValueChange += Me_OnValueChange;
+                me.OnEffectsChange += Me_OnEffectsChange;
+                opp.OnEffectsChange += Opp_OnEffectsChange;
+                opp.OnValueChange += Opp_OnValueChange;
+                opp.OnDead += Opp_OnDead;
+                me.OnDead += Me_OnDead;
+
+                newQuestion();
+                newQuestion();
+                me.FillActiveCard();
+                updateCard();
+                Opp_OnValueChange(opp);
+                Me_OnValueChange(me);
+                timerBattle.Start();
+
+                SwitchScreen(screenBattle);
+
+                lblKillBanner.Text = "Game Start!";
+                lblKillBanner.Show();
+                timerKillBanner.Start();
+            }
+            else if (GameMode == GameStartMode.exercise)
+            {
+                ResetExercise();
+                if (((MaterialFlatButton)sender).Text == "2 Minutes")
+                {
+                    exerciseTick = 120;
+                }
+                else if (((MaterialFlatButton)sender).Text == "5 Minutes")
+                {
+                    exerciseTick = 300;
+                }
+                else if (((MaterialFlatButton)sender).Text == "10 Minutes")
+                {
+                    exerciseTick = 600;
+                }
+                else if (((MaterialFlatButton)sender).Text == "15 Minutes")
+                {
+                    exerciseTick = 900;
+                }
+                if (exerciseTick <= 0)
+                {
+                    return;
+                }
+                ExCountdown.Maximum = exerciseTick;
+                newExQuestion();
+                newExQuestion();
+                newExQuestion();
+                timerExercise.Start();
+                SwitchScreen(screenExercise);
+            }
         }
         #endregion
 
@@ -333,7 +428,7 @@ namespace MathsBattle
         }
         private void newQuestion()
         {
-            Question q = QuestionGenerator.Generate(null, new Type[] { typeof(SimplePercentage) }.ToList());
+            Question q = QuestionGenerator.Generate(null, new Type[] { typeof(SimplePercentage), typeof(TriangleInequality), typeof(PercentageChange), typeof(EquationInOneUnknown), typeof(LinearEquationInTwoUnknown) }.ToList());
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = questionNo;
@@ -629,7 +724,7 @@ namespace MathsBattle
         }
         private void newExQuestion()
         {
-            Question q = QuestionGenerator.Generate(null, new Type[] { typeof(SimplePercentage) }.ToList());
+            Question q = QuestionGenerator.Generate(null,new Type[] { typeof(SimplePercentage), typeof(TriangleInequality),typeof(PercentageChange),typeof(EquationInOneUnknown),typeof(LinearEquationInTwoUnknown) }.ToList());
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = exQuestionNo;
@@ -685,122 +780,6 @@ namespace MathsBattle
         {
             SwitchScreen(screenStart);
         }
-        #endregion
-
-        private void btnSettings_ClickAnimationFinished(object sender)
-        {
-            toggleShowBGImage.Checked = gameSettings.BattleExerciseBackgroundImage;
-            toggleUseDarkTheme.Checked = gameSettings.BattleExerciseBackgroundImage;
-            SwitchScreen(screenSettings);
-        }
-
-        private void btnSettingsBack_ClickAnimationFinished(object sender)
-        {
-            string str = SerializeObject<GameSettings>(gameSettings);
-            File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
-            SwitchScreen(screenStart);
-        }
-
-        private void toggleShowBGImage_CheckedChanged(object sender, EventArgs e)
-        {
-            gameSettings.BattleExerciseBackgroundImage = toggleShowBGImage.Checked;
-        }
-
-        private void toggleUseDarkTheme_CheckedChanged(object sender, EventArgs e)
-        {
-            gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
-        }
-
-        private void rbMinute_ClickAnimationFinished(object sender)
-        {
-            if (GameMode == GameStartMode.battle)
-            {
-                ResetBattle();
-                if (((MaterialFlatButton)sender).Text == "2 Minutes")
-                {
-                    battleTick = 120;
-                }
-                else if (((MaterialFlatButton)sender).Text == "5 Minutes")
-                {
-                    battleTick = 300;
-                }
-                else if (((MaterialFlatButton)sender).Text == "10 Minutes")
-                {
-                    battleTick = 600;
-                }
-                else if (((MaterialFlatButton)sender).Text == "15 Minutes")
-                {
-                    battleTick = 900;
-                }
-                if (battleTick <= 0)
-                {
-                    return;
-                }
-
-                oppLevel++;
-                List<Card> CS = new List<Card>();
-                CS.Add(new NormalAttack());
-                CS.Add(new MegaAttack());
-                CS.Add(new ContinuedAttack());
-                CS.Add(new ContinuedHealing());
-                List<Card> CS2 = new List<Card>();
-                CS2.Add(new NormalAttack());
-                me = new GameObjects.Player(4, 100, 0, 100, 100, "You", CS);
-                opp = new GameObjects.Player(1, 40, 3, 40, 3, "Opponent", CS2);
-                SetNewOpp(oppLevel);
-                me.OnValueChange += Me_OnValueChange;
-                me.OnEffectsChange += Me_OnEffectsChange;
-                opp.OnEffectsChange += Opp_OnEffectsChange;
-                opp.OnValueChange += Opp_OnValueChange;
-                opp.OnDead += Opp_OnDead;
-                me.OnDead += Me_OnDead;
-
-                newQuestion();
-                newQuestion();
-                me.FillActiveCard();
-                updateCard();
-                Opp_OnValueChange(opp);
-                Me_OnValueChange(me);
-                timerBattle.Start();
-
-                SwitchScreen(screenBattle);
-
-                lblKillBanner.Text = "Game Start!";
-                lblKillBanner.Show();
-                timerKillBanner.Start();
-            }
-            else if (GameMode == GameStartMode.exercise)
-            {
-                ResetExercise();
-                if (((MaterialFlatButton)sender).Text == "2 Minutes")
-                {
-                    exerciseTick = 120;
-                }
-                else if (((MaterialFlatButton)sender).Text == "5 Minutes")
-                {
-                    exerciseTick = 300;
-                }
-                else if (((MaterialFlatButton)sender).Text == "10 Minutes")
-                {
-                    exerciseTick = 600;
-                }
-                else if (((MaterialFlatButton)sender).Text == "15 Minutes")
-                {
-                    exerciseTick = 900;
-                }
-                if (exerciseTick <= 0)
-                {
-                    return;
-                }
-                ExCountdown.Maximum = exerciseTick;
-                newExQuestion();
-                newExQuestion();
-                newExQuestion();
-                timerExercise.Start();
-                SwitchScreen(screenExercise);
-            }
-        }
-
         private void timerGameOverStats_Tick(object sender, EventArgs e)
         {
             if (lblGameOverScore.Visible)
@@ -813,6 +792,25 @@ namespace MathsBattle
                 lblGameOverScore.Show();
             }
         }
+        #endregion
+
+        #region screenSettings
+        private void btnSettingsBack_ClickAnimationFinished(object sender)
+        {
+            string str = SerializeObject<GameSettings>(gameSettings);
+            File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
+            SwitchScreen(screenStart);
+        }
+        private void toggleShowBGImage_CheckedChanged(object sender, EventArgs e)
+        {
+            gameSettings.BattleExerciseBackgroundImage = toggleShowBGImage.Checked;
+        }
+        private void toggleUseDarkTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
+        }
+        #endregion
+        
     }
 
     public class GameSettings

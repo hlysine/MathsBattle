@@ -27,19 +27,19 @@ namespace MathsBattle.GameObjects.Question
             string qs2 = q2.Generate(xAns, yAns, rnd.Next());
             do
             {
-                    q1 = new internalOneEquationGenerator();
-                    qs1 = q1.Generate(xAns, yAns, rnd.Next());
+                q1 = new internalOneEquationGenerator();
+                qs1 = q1.Generate(xAns, yAns, rnd.Next());
             } while (EquationLeftTotal(q1, xAns, yAns) == EquationLeftTotal(q2, xAns, yAns));
-            string qStr = qs1 + Environment.NewLine + qs2 ;
+            string qStr = qs1 + Environment.NewLine + qs2;
             List<string> ansList = new List<string>();
             ansList.Add("(" + xAns + ", " + yAns + ")");
-            ansList.Add("(" + (xAns + rnd.Next(-10, 10)) + ", " + (yAns + rnd.Next(-10, 10)) + ")");
-            ansList.Add("(" + (xAns + rnd.Next(-10, 10)) + ", " + (yAns + rnd.Next(-10, 10)) + ")");
-            ansList.Add("(" + (xAns + rnd.Next(-10, 10)) + ", " + (yAns + rnd.Next(-10, 10)) + ")");
+            ansList.Add("(" + (xAns + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))) + ", " + (yAns + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))) + ")");
+            ansList.Add("(" + (xAns + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))) + ", " + (yAns + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))) + ")");
+            ansList.Add("(" + (xAns + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))) + ", " + (yAns + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))) + ")");
             return new Question(qStr, ansList, ansList[0]);
         }
 
-        private int EquationLeftTotal(internalOneEquationGenerator q,int xAns,int yAns)
+        private int EquationLeftTotal(internalOneEquationGenerator q, int xAns, int yAns)
         {
             int LeftTotal = 0;
             for (int i = 0; i < q.LeftTerms.Count; i++)
@@ -53,7 +53,7 @@ namespace MathsBattle.GameObjects.Question
         {
             public List<Term> LeftTerms;
             public List<Term> RightTerms;
-            Random rnd ;
+            Random rnd;
             const int MinInt = -10;
             const int MaxInt = 10;
 
@@ -78,8 +78,8 @@ namespace MathsBattle.GameObjects.Question
                 return ret;
             }
 
-            public string Generate(int xAns,int yAns,int? seed = null) 
-            { 
+            public string Generate(int xAns, int yAns, int? seed = null)
+            {
                 if (seed == null)
                 {
                     rnd = new Random(System.DateTime.Now.Millisecond);

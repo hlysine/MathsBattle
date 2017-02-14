@@ -131,9 +131,9 @@ namespace MathsBattle.GameObjects.Question
             List<string> AnsStr = new List<string>();
             string QuestionStr = GetLeft("x") + "=" + GetRight("x");
             AnsStr.Add(CorrectAns);
-            AnsStr.Add((answer + rnd.Next(-20, 20)).ToString());
-            AnsStr.Add((answer + rnd.Next(-20, 20)).ToString());
-            AnsStr.Add((answer + rnd.Next(-20, 20)).ToString());
+            AnsStr.Add((answer + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))).ToString());
+            AnsStr.Add((answer + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))).ToString());
+            AnsStr.Add((answer + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))).ToString());
             return new Question(QuestionStr, AnsStr, CorrectAns);
         }
 
