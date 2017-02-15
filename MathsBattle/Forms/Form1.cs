@@ -30,8 +30,6 @@ namespace MathsBattle
         GameSettings gameSettings;
         string folder;
         string specificFolder;
-        const int ActionBarHeight = 40;
-        const int StatusBarHeight = 24;
 
         //variables for start screen
         string[] tips = MathsBattle.Properties.Resources.Tips.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -45,12 +43,26 @@ namespace MathsBattle
         Player opp;
         int questionNo = 1;
         int oppLevel = 0;
+        List<Type> qList = new Type[] {
+            typeof(SimplePercentage),
+            typeof(TriangleInequality),
+            typeof(PercentageChange),
+            typeof(EquationInOneUnknown),
+            //typeof(LinearEquationInTwoUnknown)
+        }.ToList();
 
         //variables for exercise mode
         int exerciseTick;
         int exQuestionNo = 1;
         int exScore = 0;
         int exQuestionCount = 0;
+        List<Type> ExqList = new Type[] {
+            typeof(SimplePercentage),
+            typeof(TriangleInequality),
+            typeof(PercentageChange),
+            typeof(EquationInOneUnknown),
+            //typeof(LinearEquationInTwoUnknown)
+        }.ToList();
         #endregion
 
         #region MyForm
@@ -188,11 +200,11 @@ namespace MathsBattle
             Size = new Size(871, 562);
             if (Screens.SelectedTab == screenStart)
             {
-                Screens.Height = Height - ActionBarHeight;
+                Screens.Height = Height - STATUS_BAR_HEIGHT;
             }
             else
             {
-                Screens.Height = Height - ActionBarHeight - StatusBarHeight;
+                Screens.Height = Height - ACTION_BAR_HEIGHT - STATUS_BAR_HEIGHT;
             }
         }
         private void SwitchScreen(TabPage t)
@@ -201,11 +213,11 @@ namespace MathsBattle
             Screens.SelectedTab = t;
             if (Screens.SelectedTab == screenStart)
             {
-                Screens.Height = Height - ActionBarHeight;
+                Screens.Height = Height - STATUS_BAR_HEIGHT;
             }
             else
             {
-                Screens.Height = Height - ActionBarHeight - StatusBarHeight;
+                Screens.Height = Height - ACTION_BAR_HEIGHT - STATUS_BAR_HEIGHT;
             }
             ((Control)this).ResumeDrawing();
         }
@@ -428,7 +440,7 @@ namespace MathsBattle
         }
         private void newQuestion()
         {
-            Question q = QuestionGenerator.Generate(null, new Type[] { typeof(SimplePercentage), typeof(TriangleInequality), typeof(PercentageChange), typeof(EquationInOneUnknown), typeof(LinearEquationInTwoUnknown) }.ToList());
+            Question q = QuestionGenerator.Generate(null,qList);
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = questionNo;
@@ -724,7 +736,7 @@ namespace MathsBattle
         }
         private void newExQuestion()
         {
-            Question q = QuestionGenerator.Generate(null,new Type[] { typeof(SimplePercentage), typeof(TriangleInequality),typeof(PercentageChange),typeof(EquationInOneUnknown),typeof(LinearEquationInTwoUnknown) }.ToList());
+            Question q = QuestionGenerator.Generate(null,ExqList);
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = exQuestionNo;
@@ -810,7 +822,20 @@ namespace MathsBattle
             gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
         }
         #endregion
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           for (int i = panelExQuestionAlign.Controls.Count - 1; i >= 0; i--)
+            {
+                QuestionCard qc = panelExQuestionAlign.Controls[i] as QuestionCard;
+                if (qc != null)
+                {
+                    panelExQuestionAlign.Controls.Remove(qc);
+                    newExQuestion();
+                    return;
+                }
+            }
+        }
     }
 
     public class GameSettings

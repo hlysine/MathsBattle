@@ -27,11 +27,11 @@ namespace MathsBattle.GameObjects.Question
 
             string QuestionStr = "Which of the following sets of lines can form a triangle?";
             List<string> AnsStr = new List<string>();
-            AnsStr.Add(ans.ToString()); 
-            AnsStr.Add(i1.ToString()); 
-            AnsStr.Add(i2.ToString()); 
-            AnsStr.Add(i3.ToString()); 
-            string correctAns = ans.ToString(); 
+            AnsStr.Add(ans.ToString());
+            AnsStr.Add(i1.ToString());
+            AnsStr.Add(i2.ToString());
+            AnsStr.Add(i3.ToString());
+            string correctAns = ans.ToString();
             return new Question(QuestionStr, AnsStr, correctAns);
         }
 
@@ -51,7 +51,7 @@ namespace MathsBattle.GameObjects.Question
         {
             int a = rnd.Next(1, 11);
             int b = rnd.Next(1, 11);
-            int c = rnd.Next(2) == 1 ? rnd.Next(a + b + 1, a + b + 21) : rnd.Next(1, Math.Max(a, b) - Math.Min(a, b) + 1);
+            int c = rnd.Next(2) == 1 ? rnd.Next(a + b + 1, a + b + 21) : a == b ? rnd.Next(a + b + 1, a + b + 21) : rnd.Next(1, Math.Max(a, b) - Math.Min(a, b) + 1);
             return new SetOfLine(a, b, c);
         }
 
