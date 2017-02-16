@@ -75,6 +75,7 @@ namespace MathsBattle
             typeof(TriangleInequality),
             typeof(PercentageChange),
             typeof(EquationInOneUnknown),
+            //typeof(BasicOperations),
             //typeof(LinearEquationInTwoUnknown)
         }.ToList();
         #endregion

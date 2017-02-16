@@ -84,6 +84,7 @@
     <Compile Include="GameObjects\Question\LinearEquationInTwoUnknown.cs" />
     <Compile Include="GameObjects\Question\Question.cs" />
     <Compile Include="GameObjects\Question\PercentageChange.cs" />
+    <Compile Include="GameObjects\Question\BasicOperations.cs" />
     <Compile Include="GameObjects\Question\QuestionTemplate.cs" />
     <Compile Include="GameObjects\Question\SimplePercentage.cs" />
     <Compile Include="GameObjects\Question\TriangleInequality.cs" />
