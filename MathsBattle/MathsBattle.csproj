@@ -158,6 +158,9 @@
     <EmbeddedResource Include="GameObjects\CustomControls\QuestionCard.resx">
       <DependentUpon>QuestionCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GameObjects\CustomControls\TimedEffectCard.resx">
+      <DependentUpon>TimedEffectCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MaterialSkin\Controls\MaterialForm.resx">
       <DependentUpon>MaterialForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -92,6 +92,7 @@
             this.lblGameResult = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.screenExercise = new MaterialSkin.Controls.MaterialTabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblExMark = new MaterialSkin.Controls.MaterialLabel();
             this.panelExQuestionAlign = new MaterialSkin.Controls.MaterialPanel();
             this.lblExTime = new MaterialSkin.Controls.MaterialLabel();
@@ -114,7 +115,6 @@
             this.timerKillBanner = new System.Windows.Forms.Timer(this.components);
             this.timerExercise = new System.Windows.Forms.Timer(this.components);
             this.timerGameOverStats = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.Screens.SuspendLayout();
             this.screenStart.SuspendLayout();
             this.panelRightDock.SuspendLayout();
@@ -348,7 +348,6 @@
             // materialCardPanel1
             // 
             this.materialCardPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.materialCardPanel1.AutoSize = true;
             this.materialCardPanel1.BackColor = System.Drawing.Color.Transparent;
             this.materialCardPanel1.Controls.Add(this.rb15Minute);
             this.materialCardPanel1.Controls.Add(this.rb10Minute);
@@ -357,21 +356,22 @@
             this.materialCardPanel1.Controls.Add(this.materialLabel12);
             this.materialCardPanel1.Controls.Add(this.materialLabel9);
             this.materialCardPanel1.Depth = 0;
-            this.materialCardPanel1.Location = new System.Drawing.Point(285, 20);
+            this.materialCardPanel1.Location = new System.Drawing.Point(273, 11);
             this.materialCardPanel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCardPanel1.Name = "materialCardPanel1";
             this.materialCardPanel1.Primary = false;
-            this.materialCardPanel1.Size = new System.Drawing.Size(330, 421);
+            this.materialCardPanel1.Size = new System.Drawing.Size(342, 439);
             this.materialCardPanel1.TabIndex = 1;
             // 
             // rb15Minute
             // 
+            this.rb15Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rb15Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb15Minute.Depth = 0;
             this.rb15Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb15Minute.FontSize = 9;
             this.rb15Minute.Icon = null;
-            this.rb15Minute.Location = new System.Drawing.Point(79, 234);
+            this.rb15Minute.Location = new System.Drawing.Point(85, 234);
             this.rb15Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb15Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb15Minute.Name = "rb15Minute";
@@ -383,12 +383,13 @@
             // 
             // rb10Minute
             // 
+            this.rb10Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rb10Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb10Minute.Depth = 0;
             this.rb10Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb10Minute.FontSize = 9;
             this.rb10Minute.Icon = null;
-            this.rb10Minute.Location = new System.Drawing.Point(79, 198);
+            this.rb10Minute.Location = new System.Drawing.Point(85, 198);
             this.rb10Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb10Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb10Minute.Name = "rb10Minute";
@@ -400,12 +401,13 @@
             // 
             // rb5Minute
             // 
+            this.rb5Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rb5Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb5Minute.Depth = 0;
             this.rb5Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb5Minute.FontSize = 9;
             this.rb5Minute.Icon = null;
-            this.rb5Minute.Location = new System.Drawing.Point(79, 162);
+            this.rb5Minute.Location = new System.Drawing.Point(85, 162);
             this.rb5Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb5Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb5Minute.Name = "rb5Minute";
@@ -417,12 +419,13 @@
             // 
             // rb2Minute
             // 
+            this.rb2Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rb2Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb2Minute.Depth = 0;
             this.rb2Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb2Minute.FontSize = 9;
             this.rb2Minute.Icon = null;
-            this.rb2Minute.Location = new System.Drawing.Point(79, 126);
+            this.rb2Minute.Location = new System.Drawing.Point(85, 126);
             this.rb2Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb2Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb2Minute.Name = "rb2Minute";
@@ -478,9 +481,9 @@
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBack.Depth = 0;
-            this.btnBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnBack.Font = new System.Drawing.Font("Roboto", 9F);
             this.btnBack.FontSize = 9;
             this.btnBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
@@ -706,6 +709,7 @@
             // 
             // lblTimeLeft
             // 
+            this.lblTimeLeft.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTimeLeft.BackColor = System.Drawing.Color.Transparent;
             this.lblTimeLeft.Depth = 0;
             this.lblTimeLeft.Font = new System.Drawing.Font("Roboto", 15F);
@@ -722,6 +726,7 @@
             // 
             // panelOppEffect
             // 
+            this.panelOppEffect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelOppEffect.Depth = 0;
             this.panelOppEffect.Location = new System.Drawing.Point(306, 126);
             this.panelOppEffect.MouseState = MaterialSkin.MouseState.HOVER;
@@ -808,6 +813,7 @@
             // 
             // panelMeEffect
             // 
+            this.panelMeEffect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMeEffect.Depth = 0;
             this.panelMeEffect.Location = new System.Drawing.Point(94, 126);
             this.panelMeEffect.MouseState = MaterialSkin.MouseState.HOVER;
@@ -993,6 +999,7 @@
             // 
             // materialDivider1
             // 
+            this.materialDivider1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 2;
             this.materialDivider1.Location = new System.Drawing.Point(299, 39);
@@ -1070,9 +1077,9 @@
             // 
             // btnGameOverBack
             // 
+            this.btnGameOverBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGameOverBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnGameOverBack.Depth = 0;
-            this.btnGameOverBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnGameOverBack.Font = new System.Drawing.Font("Roboto", 9F);
             this.btnGameOverBack.FontSize = 9;
             this.btnGameOverBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
@@ -1142,8 +1149,19 @@
             this.screenExercise.Text = "Drilling Exercise";
             this.screenExercise.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 144);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Ans!!";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // lblExMark
             // 
+            this.lblExMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExMark.BackColor = System.Drawing.Color.Transparent;
             this.lblExMark.Depth = 0;
             this.lblExMark.Font = new System.Drawing.Font("Roboto", 35F);
@@ -1160,6 +1178,7 @@
             // 
             // panelExQuestionAlign
             // 
+            this.panelExQuestionAlign.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panelExQuestionAlign.Depth = 0;
             this.panelExQuestionAlign.Location = new System.Drawing.Point(63, 169);
             this.panelExQuestionAlign.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1356,9 +1375,9 @@
             // 
             // btnSettingsBack
             // 
+            this.btnSettingsBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSettingsBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSettingsBack.Depth = 0;
-            this.btnSettingsBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSettingsBack.Font = new System.Drawing.Font("Roboto", 9F);
             this.btnSettingsBack.FontSize = 9;
             this.btnSettingsBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
@@ -1418,16 +1437,6 @@
             this.timerGameOverStats.Interval = 1000;
             this.timerGameOverStats.Tick += new System.EventHandler(this.timerGameOverStats_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(23, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Ans!!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1446,7 +1455,6 @@
             this.panelTips.ResumeLayout(false);
             this.panelTips.PerformLayout();
             this.screenGameSettings.ResumeLayout(false);
-            this.screenGameSettings.PerformLayout();
             this.materialCardPanel1.ResumeLayout(false);
             this.materialCardPanel1.PerformLayout();
             this.panelOppFooter.ResumeLayout(false);

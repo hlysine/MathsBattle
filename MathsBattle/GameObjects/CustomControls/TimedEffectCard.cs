@@ -27,10 +27,11 @@ namespace MathsBattle.GameObjects.CustomControls
             this.TEcountdown.BackColor = System.Drawing.Color.Transparent;
             this.TEcountdown.Depth = 0;
             this.TEcountdown.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TEcountdown.Font = new System.Drawing.Font("Roboto", 15F);
+            this.TEcountdown.Font = new System.Drawing.Font("Roboto", 11F);
             this.TEcountdown.FontSize = 11;
             this.TEcountdown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TEcountdown.Location = new System.Drawing.Point(0, 0);
+            this.TEcountdown.MouseState = MaterialSkin.MouseState.HOVER;
             this.TEcountdown.Name = "TEcountdown";
             this.TEcountdown.Primary = false;
             this.TEcountdown.Size = new System.Drawing.Size(52, 42);
@@ -43,13 +44,14 @@ namespace MathsBattle.GameObjects.CustomControls
             this.TEtitle.AutoSize = true;
             this.TEtitle.BackColor = System.Drawing.Color.Transparent;
             this.TEtitle.Depth = 0;
-            this.TEtitle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TEtitle.Font = new System.Drawing.Font("Roboto", 9F);
             this.TEtitle.FontSize = 9;
             this.TEtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TEtitle.Location = new System.Drawing.Point(58, 6);
+            this.TEtitle.MouseState = MaterialSkin.MouseState.HOVER;
             this.TEtitle.Name = "TEtitle";
             this.TEtitle.Primary = true;
-            this.TEtitle.Size = new System.Drawing.Size(119, 18);
+            this.TEtitle.Size = new System.Drawing.Size(93, 14);
             this.TEtitle.TabIndex = 1;
             this.TEtitle.Text = "Time Effect Title";
             // 
@@ -58,6 +60,7 @@ namespace MathsBattle.GameObjects.CustomControls
             this.TEcountdownBar.DecreaseHighlight = false;
             this.TEcountdownBar.Depth = 0;
             this.TEcountdownBar.Location = new System.Drawing.Point(61, 29);
+            this.TEcountdownBar.MouseState = MaterialSkin.MouseState.HOVER;
             this.TEcountdownBar.Name = "TEcountdownBar";
             this.TEcountdownBar.OnRight = false;
             this.TEcountdownBar.Size = new System.Drawing.Size(113, 5);
@@ -65,10 +68,10 @@ namespace MathsBattle.GameObjects.CustomControls
             // 
             // TimedEffectCard
             // 
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.TEcountdownBar);
             this.Controls.Add(this.TEtitle);
             this.Controls.Add(this.TEcountdown);
-            this.Name = "TimedEffectCard";
             this.Size = new System.Drawing.Size(182, 42);
             this.ResumeLayout(false);
             this.PerformLayout();

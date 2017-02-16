@@ -169,6 +169,7 @@ namespace MathsBattle
             }
             panelExQuestionAlign.BackColor = SkinManager.GetApplicationBackgroundColor();
             ((Control)this).ResumeDrawing();
+            SwitchScreen(screenStart);
         }
         static string SerializeObject<T>(T toSerialize)
         {
