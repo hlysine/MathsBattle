@@ -20,7 +20,7 @@ namespace MathsBattle.GameObjects.Cards
         {
             get
             {
-                return "20 MP: Attack 40 HP";
+                return "Attack 40 HP";
             }
         }
 

@@ -43,12 +43,26 @@ namespace MathsBattle
         Player opp;
         int questionNo = 1;
         int oppLevel = 0;
-        List<Type> qList = new Type[] {
+        List<Type> qList = new Type[]
+        {
             typeof(SimplePercentage),
             typeof(TriangleInequality),
             typeof(PercentageChange),
             typeof(EquationInOneUnknown),
             //typeof(LinearEquationInTwoUnknown)
+        }.ToList();
+        List<Card> CS = new Card[]
+        {
+            new NormalAttack(),
+            new MegaAttack(),
+            new ContinuedAttack(),
+            new ContinuedHealing(),
+            new HPTransfer(),
+            //new HPtoMP(),
+            new QuickHeal(),
+            new PercentageAttack(),
+            new PercentageHeal(),
+            new DelayedAttack()
         }.ToList();
 
         //variables for exercise mode
@@ -287,11 +301,6 @@ namespace MathsBattle
                 }
 
                 oppLevel++;
-                List<Card> CS = new List<Card>();
-                CS.Add(new NormalAttack());
-                CS.Add(new MegaAttack());
-                CS.Add(new ContinuedAttack());
-                CS.Add(new ContinuedHealing());
                 List<Card> CS2 = new List<Card>();
                 CS2.Add(new NormalAttack());
                 me = new GameObjects.Player(4, 100, 0, 100, 100, "You", CS);
@@ -428,20 +437,19 @@ namespace MathsBattle
             List<Card> CS = new List<Card>();
             if (lvl % 5 == 0)
             {
-                CS.Add(new ContinuedAttack());
-                CS.Add(new MegaAttack());
-                opp.Reset(1, opp.MaxHP + 50, 3 + (int)Math.Floor(lvl * 0.2), opp.MaxHP + 50, 3 + (int)Math.Floor(lvl * 0.2), "Lvl " + lvl.ToString() + " BOSS", CS);
+                CS.Add(new ContinuedHealing());
+                opp.Reset(1, 40 + lvl * 30, 5 + (int)Math.Floor(lvl * 0.2), 40 + lvl * 30, 5 + (int)Math.Floor(lvl * 0.2), "Lvl " + lvl.ToString() + " BOSS", CS);
             }
             else
             {
                 CS.Add(new NormalAttack());
-                opp.Reset(1, opp.MaxHP + 50, 3 + (int)Math.Floor(lvl * 0.2), opp.MaxHP + 50, 3 + (int)Math.Floor(lvl * 0.2), "Lvl " + lvl.ToString() + " Opponent", CS);
+                opp.Reset(1, 40 + lvl * 20, 5 + (int)Math.Floor(lvl * 0.2), 40 + lvl * 20, 5 + (int)Math.Floor(lvl * 0.2), "Lvl " + lvl.ToString() + " Opponent", CS);
             }
             lblOppName.Text = opp.Name;
         }
         private void newQuestion()
         {
-            Question q = QuestionGenerator.Generate(null,qList);
+            Question q = QuestionGenerator.Generate(null, qList);
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = questionNo;
@@ -737,7 +745,7 @@ namespace MathsBattle
         }
         private void newExQuestion()
         {
-            Question q = QuestionGenerator.Generate(null,ExqList);
+            Question q = QuestionGenerator.Generate(null, ExqList);
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = exQuestionNo;
@@ -823,20 +831,6 @@ namespace MathsBattle
             gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           for (int i = panelExQuestionAlign.Controls.Count - 1; i >= 0; i--)
-            {
-                QuestionCard qc = panelExQuestionAlign.Controls[i] as QuestionCard;
-                if (qc != null)
-                {
-                    panelExQuestionAlign.Controls.Remove(qc);
-                    newExQuestion();
-                    return;
-                }
-            }
-        }
     }
 
     public class GameSettings

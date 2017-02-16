@@ -92,7 +92,6 @@
             this.lblGameResult = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.screenExercise = new MaterialSkin.Controls.MaterialTabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblExMark = new MaterialSkin.Controls.MaterialLabel();
             this.panelExQuestionAlign = new MaterialSkin.Controls.MaterialPanel();
             this.lblExTime = new MaterialSkin.Controls.MaterialLabel();
@@ -348,6 +347,7 @@
             // materialCardPanel1
             // 
             this.materialCardPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.materialCardPanel1.AutoSize = true;
             this.materialCardPanel1.BackColor = System.Drawing.Color.Transparent;
             this.materialCardPanel1.Controls.Add(this.rb15Minute);
             this.materialCardPanel1.Controls.Add(this.rb10Minute);
@@ -1130,7 +1130,6 @@
             // screenExercise
             // 
             this.screenExercise.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.screenExercise.Controls.Add(this.button1);
             this.screenExercise.Controls.Add(this.lblExMark);
             this.screenExercise.Controls.Add(this.panelExQuestionAlign);
             this.screenExercise.Controls.Add(this.lblExTime);
@@ -1148,16 +1147,6 @@
             this.screenExercise.TabIndex = 4;
             this.screenExercise.Text = "Drilling Exercise";
             this.screenExercise.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(23, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Ans!!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblExMark
             // 
@@ -1455,6 +1444,7 @@
             this.panelTips.ResumeLayout(false);
             this.panelTips.PerformLayout();
             this.screenGameSettings.ResumeLayout(false);
+            this.screenGameSettings.PerformLayout();
             this.materialCardPanel1.ResumeLayout(false);
             this.materialCardPanel1.PerformLayout();
             this.panelOppFooter.ResumeLayout(false);
@@ -1559,7 +1549,6 @@
         private MaterialSkin.Controls.MaterialLabel lblGameOverHighscore;
         private MaterialSkin.Controls.MaterialLabel lblGameOverScore;
         private System.Windows.Forms.Timer timerGameOverStats;
-        private System.Windows.Forms.Button button1;
     }
 }
 

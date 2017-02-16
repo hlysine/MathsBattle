@@ -58,7 +58,7 @@ namespace MathsBattle.GameObjects.Question
 
             //Randomize equation terms
             int LeftTermCount = rnd.Next(MinTerm, MaxTerm);
-            int RightTermCount = rnd.Next(MinTerm, MaxTerm);
+            int RightTermCount = rnd.Next(MinTerm, MaxTerm - 1);
             answer = rnd.Next(MinAns, MaxAns);
 
             for (int i = 1; i <= LeftTermCount; i++)

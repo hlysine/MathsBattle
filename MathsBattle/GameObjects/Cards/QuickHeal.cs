@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MathsBattle.GameObjects.Cards
 {
-    public class ContinuedAttack : Card
+    public class QuickHeal : Card 
     {
         public override int Cost
         {
             get
             {
-                return 30;
+                return 10;
             }
         }
 
@@ -20,7 +20,7 @@ namespace MathsBattle.GameObjects.Cards
         {
             get
             {
-                return "Attack 3 HP every 1 second for 12 seconds";
+                return "Heals 10 HP in 2 seconds"; 
             }
         }
 
@@ -28,18 +28,18 @@ namespace MathsBattle.GameObjects.Cards
         {
             get
             {
-                return "Continued Attack";
+                return "Quick Heal";
             }
         }
 
-        public override void Action(Player from, Player to)
+        public override void Action(Player from, Player to) 
         {
-            TimedEvent te = new GameObjects.TimedEvent("Continued Attack", 12, 1000);
+            TimedEvent te = new GameObjects.TimedEvent("Quick Heal", 10, 200);
             te.OnTick += sender =>
             {
-                to.HP -= 3;
+                from.HP += 1;
             };
-            to.Effects.Add(te);
+            from.Effects.Add(te);
             te.Start();
         }
     }

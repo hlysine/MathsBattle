@@ -60,7 +60,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameObjects\Cards\Card.cs" />
-    <Compile Include="GameObjects\Cards\CardTemplate.cs" />
+    <Compile Include="GameObjects\Cards\DelayedAttack.cs" />
+    <Compile Include="GameObjects\Cards\PercentageHeal.cs" />
+    <Compile Include="GameObjects\Cards\PercentageAttack.cs" />
+    <Compile Include="GameObjects\Cards\QuickHeal.cs" />
+    <Compile Include="GameObjects\Cards\HPtoMP.cs" />
+    <Compile Include="GameObjects\Cards\HPTransfer.cs" />
     <Compile Include="GameObjects\Cards\ContinuedAttack.cs" />
     <Compile Include="GameObjects\Cards\ContinuedHealing.cs" />
     <Compile Include="GameObjects\Cards\MegaAttack.cs" />
