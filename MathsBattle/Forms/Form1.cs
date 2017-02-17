@@ -31,6 +31,8 @@ namespace MathsBattle
         string folder;
         string specificFolder;
         bool suspendClose;
+        enum DialogMode { ConfirmRestart, ConfirmBattleQuit, ConfirmExerciseQuit }
+        DialogMode dialogMode;
 
         //variables for start screen
         string[] tips = MathsBattle.Properties.Resources.Tips.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -81,7 +83,7 @@ namespace MathsBattle
         }.ToList();
 
         //variables for settings
-        bool prevTheme;
+        GameSettings prevSettings;
         #endregion
 
         #region MyForm
@@ -120,6 +122,7 @@ namespace MathsBattle
                 {
                     tb.BackgroundImage = null;
                 }
+                panelFormBG.BackgroundImage = null;
             }
             else
             {
@@ -129,6 +132,7 @@ namespace MathsBattle
                     {
                         tb.BackgroundImage = Properties.Resources.StartScreenBGDark;
                     }
+                    panelFormBG.BackgroundImage = Properties.Resources.StartScreenBGDark;
                 }
                 else
                 {
@@ -136,18 +140,23 @@ namespace MathsBattle
                     {
                         tb.BackgroundImage = Properties.Resources.StartScreenBG;
                     }
+                    panelFormBG.BackgroundImage = Properties.Resources.StartScreenBG;
                 }
             }
 #pragma warning restore CS0162
             if (SkinManager.Theme == MaterialSkinManager.Themes.DARK)
             {
-                btnNextTip.Icon = MathsBattle.Properties.Resources.navRight;
-                btnPrevTip.Icon = MathsBattle.Properties.Resources.navLeft;
+                btnNextTip.Icon = Properties.Resources.navRight;
+                btnPrevTip.Icon = Properties.Resources.navLeft;
+                btnExQuit.Icon = Properties.Resources.quit;
+                btnQuit.Icon = Properties.Resources.quit;
             }
             else
             {
-                btnNextTip.Icon = MathsBattle.Properties.Resources.navRightDark;
-                btnPrevTip.Icon = MathsBattle.Properties.Resources.navLeftDark;
+                btnNextTip.Icon = Properties.Resources.navRightDark;
+                btnPrevTip.Icon = Properties.Resources.navLeftDark;
+                btnExQuit.Icon = Properties.Resources.quitDark;
+                btnQuit.Icon = Properties.Resources.quitDark;
             }
             Random rnd = new Random((int)DateTime.Now.Ticks);
             tipsNo = rnd.Next(0, tips.Count());
@@ -160,8 +169,9 @@ namespace MathsBattle
             panelBattle.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelTips.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelRightDock.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
+            panelDialogBG.BackColor = Color.FromArgb(100, Color.Black);
             panelQuestionAlign.BackColor = Color.Transparent;
-            panelDialogBG.BackColor = Color.Transparent;
+            panelDialog.BackColor = Color.Transparent;
             foreach (Control c in panelBattle.Controls)
             {
                 if (SupportsTransparentBackColor(c)) c.BackColor = Color.Transparent;
@@ -186,7 +196,6 @@ namespace MathsBattle
             {
                 if (SupportsTransparentBackColor(c)) c.BackColor = Color.Transparent;
             }
-            panelExQuestionAlign.BackColor = SkinManager.GetApplicationBackgroundColor();
             ((Control)this).ResumeDrawing();
             SwitchScreen(screenStart);
         }
@@ -220,11 +229,11 @@ namespace MathsBattle
             Size = new Size(871, 562);
             if (Screens.SelectedTab == screenStart)
             {
-                Screens.Height = Height - STATUS_BAR_HEIGHT;
+                panelFormBG.Height = Height - STATUS_BAR_HEIGHT;
             }
             else
             {
-                Screens.Height = Height - ACTION_BAR_HEIGHT - STATUS_BAR_HEIGHT;
+                panelFormBG.Height = Height - ACTION_BAR_HEIGHT - STATUS_BAR_HEIGHT;
             }
         }
         private void SwitchScreen(TabPage t)
@@ -233,13 +242,39 @@ namespace MathsBattle
             Screens.SelectedTab = t;
             if (Screens.SelectedTab == screenStart)
             {
-                Screens.Height = Height - STATUS_BAR_HEIGHT;
+                panelFormBG.Height = Height - STATUS_BAR_HEIGHT;
             }
             else
             {
-                Screens.Height = Height - ACTION_BAR_HEIGHT - STATUS_BAR_HEIGHT;
+                panelFormBG.Height = Height - ACTION_BAR_HEIGHT - STATUS_BAR_HEIGHT;
             }
             ((Control)this).ResumeDrawing();
+        }
+        private void ShowMsgBox(DialogMode dm)
+        {
+            dialogMode = dm;
+            if (dm == DialogMode.ConfirmRestart)
+            {
+                lblDialogTitle.Text = "Restart MathsBattle";
+                lblDialogText.Text = "You need to restart MathsBattle for these changes to take place. Continue?";
+                btnDialogOK.Text = "Restart";
+                btnDialogCancel.Text = "Cancel";
+            }
+            else if (dm == DialogMode.ConfirmBattleQuit)
+            {
+                lblDialogTitle.Text = "Quit Game";
+                lblDialogText.Text = "Are you sure you want to quit this game? Game progress will be discarded.";
+                btnDialogOK.Text = "Quit";
+                btnDialogCancel.Text = "Cancel";
+            }
+            else if (dm == DialogMode.ConfirmExerciseQuit)
+            {
+                lblDialogTitle.Text = "Quit Exercise";
+                lblDialogText.Text = "Are you sure you want to quit this exercise? Progress will be discarded.";
+                btnDialogOK.Text = "Quit";
+                btnDialogCancel.Text = "Cancel";
+            }
+            panelDialogBG.BringToFront();
         }
         #endregion
 
@@ -258,7 +293,7 @@ namespace MathsBattle
         {
             toggleShowBGImage.Checked = gameSettings.BattleExerciseBackgroundImage;
             toggleUseDarkTheme.Checked = gameSettings.DarkTheme;
-            prevTheme = gameSettings.DarkTheme;
+            prevSettings = gameSettings;
             SwitchScreen(screenSettings);
         }
         private void btnNextTip_Click(object sender, EventArgs e)
@@ -461,6 +496,7 @@ namespace MathsBattle
             card.QuestionNo = questionNo;
             questionNo++;
             card.Dock = DockStyle.Bottom;
+            card.BackColor = Color.Transparent;
             card.OnAnswered += Card_OnAnswered;
             card.OnClosed += Card_OnClosed;
             panelQuestionAlign.Controls.Add(card);
@@ -757,6 +793,7 @@ namespace MathsBattle
             card.QuestionNo = exQuestionNo;
             exQuestionNo++;
             card.Dock = DockStyle.Right;
+            card.BackColor = Color.Transparent;
             card.OnAnswered += ExCard_OnAnswered;
             card.OnClosed += ExCard_OnClosed;
             panelExQuestionAlign.Controls.Add(card);
@@ -826,10 +863,9 @@ namespace MathsBattle
         {
             string str = SerializeObject<GameSettings>(gameSettings);
             File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
-            if (gameSettings.DarkTheme != prevTheme)
+            if (gameSettings != prevSettings)
             {
-                panelDialogBG.BackColor = Color.FromArgb(100, Color.Black);
-                panelRestartDialog.Show();
+                ShowMsgBox(DialogMode.ConfirmRestart);
             }
             else
             {
@@ -848,29 +884,64 @@ namespace MathsBattle
 
         private void btnThemeOK_ClickAnimationFinished(object sender)
         {
-            suspendClose = true;
-            Close();
-            Form1 f = new Form1();
-            f.StartPosition = FormStartPosition.Manual;
-            f.Location = Location;
-            f.Show();
-            suspendClose = false;
+            if (dialogMode == DialogMode.ConfirmRestart)
+            {
+                suspendClose = true;
+                Close();
+                Form1 f = new Form1();
+                f.StartPosition = FormStartPosition.Manual;
+                f.Location = Location;
+                f.Show();
+                suspendClose = false;
+            }
+            else if (dialogMode == DialogMode.ConfirmBattleQuit)
+            {
+                SwitchScreen(screenStart);
+                Screens.BringToFront();
+                ResetBattle();
+            }
+            else if (dialogMode == DialogMode.ConfirmExerciseQuit)
+            {
+                SwitchScreen(screenStart);
+                Screens.BringToFront();
+                ResetExercise();
+            }
         }
 
         private void btnThemeCancel_ClickAnimationFinished(object sender)
         {
-            panelDialogBG.BackColor = Color.Transparent;
-            panelRestartDialog.Hide();
-            SwitchScreen(screenStart);
+            if (dialogMode == DialogMode.ConfirmRestart)
+            {
+                SwitchScreen(screenStart);
+                Screens.BringToFront();
+            }
+            else if (dialogMode == DialogMode.ConfirmBattleQuit)
+            {
+                Screens.BringToFront();
+            }
+            else if (dialogMode == DialogMode.ConfirmExerciseQuit)
+            {
+                Screens.BringToFront();
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!suspendClose) Application.Exit();
         }
+
+        private void btnExQuit_ClickAnimationFinished(object sender)
+        {
+            ShowMsgBox(DialogMode.ConfirmExerciseQuit);
+        }
+
+        private void btnQuit_ClickAnimationFinished(object sender)
+        {
+            ShowMsgBox(DialogMode.ConfirmBattleQuit);
+        }
     }
 
-    public class GameSettings
+    public struct GameSettings
     {
         private bool _BattleExerciseBackgroundImage;
         public bool BattleExerciseBackgroundImage
@@ -924,6 +995,14 @@ namespace MathsBattle
         {
             _BattleExerciseBackgroundImage = true;
             _DarkTheme = false;
+        }
+        public static bool operator ==(GameSettings s1, GameSettings s2)
+        {
+            return s1.Equals(s2);
+        }
+        public static bool operator !=(GameSettings s1, GameSettings s2)
+        {
+            return !s1.Equals(s2);
         }
     }
 }

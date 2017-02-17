@@ -224,7 +224,7 @@ namespace MathsBattle.GameObjects.CustomControls
             else
             {
                 Height = 0;
-                OnClosed(this);
+                OnClosed?.Invoke(this);
             }
         }
     }
