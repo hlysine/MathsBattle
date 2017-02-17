@@ -75,11 +75,11 @@ namespace MathsBattle
         int exScore = 0;
         int exQuestionCount = 0;
         List<Type> ExqList = new Type[] {
-            typeof(SimplePercentage),
-            typeof(TriangleInequality),
-            typeof(PercentageChange),
-            typeof(EquationInOneUnknown),
-            //typeof(BasicOperations),
+            //typeof(SimplePercentage),
+            //typeof(TriangleInequality),
+            //typeof(PercentageChange),
+            //typeof(EquationInOneUnknown),
+            typeof(BasicOperations),
             //typeof(LinearEquationInTwoUnknown)
         }.ToList();
 

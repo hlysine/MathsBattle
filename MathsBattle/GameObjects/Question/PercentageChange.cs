@@ -22,7 +22,7 @@ namespace MathsBattle.GameObjects.Question
             }
 
             int bNum = rnd.Next(101);
-            int change = rnd.Next(-9, 10);
+            int change = rnd.Next(2) == 1 ? rnd.Next(-9, 0) : rnd.Next(1, 10);
             float ans = bNum * (1 + change / 10f);
 
             string QuestionStr = "Find " + bNum.ToString() + " changed by " + (change * 10).ToString() + "%.";

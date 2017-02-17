@@ -75,7 +75,7 @@ namespace MathsBattle.GameObjects.Question
             }
 
             //solve the rest (addition and subtraction)
-            for (int i = t.Count-1; i >0; i--)
+            for (int i = t.Count-1; i > 0; i--)
             { 
                 if (t[1].OP == Operator.plus)
                 {
