@@ -50,7 +50,7 @@ namespace MathsBattle.GameObjects.Question
             }
             while (hasSec)
             {
-                for (int i = t.Count - 1; i > 0; i--)
+                for (int i = 0; i <t.Count; i++)
                 {
                     Term tr = t[i];
                     if (tr.OP == Operator.multiply || tr.OP == Operator.divide)
@@ -63,9 +63,14 @@ namespace MathsBattle.GameObjects.Question
                         {
                             t[i - 1].num = t[i - 1].num / tr.num;
                         }
-                        t.RemoveAt(i);
+                        t[i].num = 0;
+                        t[i].OP = Operator.none;
                         break;
                     }
+                }
+                for (int i = 0; i < t.Count; i++)
+                {
+                    if (t[i].num == 0 && t[i].OP == Operator.none) t.RemoveAt(i);
                 }
                 hasSec = false;
                 foreach (Term tr in t)
@@ -128,7 +133,7 @@ namespace MathsBattle.GameObjects.Question
                 }
                 else if (OP == Operator.divide)
                 {
-                    return "÷" + num.ToString();
+                    return "/" + num.ToString();
                 }
                 else { return num.ToString(); }
             }
