@@ -30,6 +30,7 @@ namespace MathsBattle
         GameSettings gameSettings;
         string folder;
         string specificFolder;
+        bool suspendClose;
 
         //variables for start screen
         string[] tips = MathsBattle.Properties.Resources.Tips.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -78,6 +79,9 @@ namespace MathsBattle
             //typeof(BasicOperations),
             //typeof(LinearEquationInTwoUnknown)
         }.ToList();
+
+        //variables for settings
+        bool prevTheme;
         #endregion
 
         #region MyForm
@@ -108,20 +112,18 @@ namespace MathsBattle
             SkinManager.AddFormToManage(this);
             SkinManager.Theme = gameSettings.DarkTheme ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.LIGHT;
             SkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.Blue200, TextShade.WHITE);
+
+#pragma warning disable CS0162
             if (NO_BG)
             {
-#pragma warning disable CS0162
                 foreach (TabPage tb in Screens.TabPages)
-#pragma warning restore CS0162
                 {
                     tb.BackgroundImage = null;
                 }
             }
             else
             {
-#pragma warning disable CS0162
                 if (SkinManager.Theme == MaterialSkinManager.Themes.DARK)
-#pragma warning restore CS0162
                 {
                     foreach (TabPage tb in Screens.TabPages)
                     {
@@ -136,6 +138,7 @@ namespace MathsBattle
                     }
                 }
             }
+#pragma warning restore CS0162
             if (SkinManager.Theme == MaterialSkinManager.Themes.DARK)
             {
                 btnNextTip.Icon = MathsBattle.Properties.Resources.navRight;
@@ -158,6 +161,7 @@ namespace MathsBattle
             panelTips.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelRightDock.BackColor = Color.FromArgb(175, SkinManager.GetApplicationBackgroundColor());
             panelQuestionAlign.BackColor = Color.Transparent;
+            panelDialogBG.BackColor = Color.Transparent;
             foreach (Control c in panelBattle.Controls)
             {
                 if (SupportsTransparentBackColor(c)) c.BackColor = Color.Transparent;
@@ -253,7 +257,8 @@ namespace MathsBattle
         private void btnSettings_ClickAnimationFinished(object sender)
         {
             toggleShowBGImage.Checked = gameSettings.BattleExerciseBackgroundImage;
-            toggleUseDarkTheme.Checked = gameSettings.BattleExerciseBackgroundImage;
+            toggleUseDarkTheme.Checked = gameSettings.DarkTheme;
+            prevTheme = gameSettings.DarkTheme;
             SwitchScreen(screenSettings);
         }
         private void btnNextTip_Click(object sender, EventArgs e)
@@ -821,7 +826,15 @@ namespace MathsBattle
         {
             string str = SerializeObject<GameSettings>(gameSettings);
             File.WriteAllText(Path.Combine(specificFolder, "Settings.xml"), str, Encoding.Unicode);
-            SwitchScreen(screenStart);
+            if (gameSettings.DarkTheme != prevTheme)
+            {
+                panelDialogBG.BackColor = Color.FromArgb(100, Color.Black);
+                panelRestartDialog.Show();
+            }
+            else
+            {
+                SwitchScreen(screenStart);
+            }
         }
         private void toggleShowBGImage_CheckedChanged(object sender, EventArgs e)
         {
@@ -832,6 +845,29 @@ namespace MathsBattle
             gameSettings.DarkTheme = toggleUseDarkTheme.Checked;
         }
         #endregion
+
+        private void btnThemeOK_ClickAnimationFinished(object sender)
+        {
+            suspendClose = true;
+            Close();
+            Form1 f = new Form1();
+            f.StartPosition = FormStartPosition.Manual;
+            f.Location = Location;
+            f.Show();
+            suspendClose = false;
+        }
+
+        private void btnThemeCancel_ClickAnimationFinished(object sender)
+        {
+            panelDialogBG.BackColor = Color.Transparent;
+            panelRestartDialog.Hide();
+            SwitchScreen(screenStart);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!suspendClose) Application.Exit();
+        }
     }
 
     public class GameSettings
