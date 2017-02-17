@@ -37,6 +37,7 @@
             this.lblQuestionText = new MaterialSkin.Controls.MaterialLabel();
             this.lblAnsResult = new MaterialSkin.Controls.MaterialLabel();
             this.btnCheck = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.SuspendLayout();
             // 
             // lblQuestionNo
@@ -175,12 +176,25 @@
             this.btnCheck.Text = "Check";
             this.btnCheck.ClickAnimationFinished += new MaterialSkin.Controls.MaterialRaisedButton.ClickAnimationFinishedEventHandler(this.btnCheck_ClickAnimationFinished);
             // 
+            // materialDivider2
+            // 
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialDivider2.Location = new System.Drawing.Point(0, 0);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(0, 238);
+            this.materialDivider2.TabIndex = 7;
+            this.materialDivider2.Text = "materialDivider2";
+            // 
             // QuestionCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.materialDivider2);
             this.Controls.Add(this.lblQuestionNo);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.rbAnswer4);
@@ -206,5 +220,6 @@
         private MaterialSkin.Controls.MaterialLabel lblQuestionNo;
         private MaterialSkin.Controls.MaterialLabel lblAnsResult;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialDivider materialDivider2;
     }
 }
