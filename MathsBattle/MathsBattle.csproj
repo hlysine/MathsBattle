@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,7 +75,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameObjects\Cards\Card.cs" />
-    <Compile Include="GameObjects\Cards\CardTemplate.cs" />
+    <Compile Include="GameObjects\Cards\DelayedAttack.cs" />
+    <Compile Include="GameObjects\Cards\PercentageHeal.cs" />
+    <Compile Include="GameObjects\Cards\PercentageAttack.cs" />
+    <Compile Include="GameObjects\Cards\QuickHeal.cs" />
+    <Compile Include="GameObjects\Cards\HPtoMP.cs" />
+    <Compile Include="GameObjects\Cards\HPTransfer.cs" />
     <Compile Include="GameObjects\Cards\ContinuedAttack.cs" />
     <Compile Include="GameObjects\Cards\ContinuedHealing.cs" />
     <Compile Include="GameObjects\Cards\MegaAttack.cs" />
@@ -78,9 +98,11 @@
     <Compile Include="GameObjects\Question\EquationInOneUnknown.cs" />
     <Compile Include="GameObjects\Question\LinearEquationInTwoUnknown.cs" />
     <Compile Include="GameObjects\Question\Question.cs" />
+    <Compile Include="GameObjects\Question\PercentageChange.cs" />
+    <Compile Include="GameObjects\Question\BasicOperations.cs" />
     <Compile Include="GameObjects\Question\QuestionTemplate.cs" />
     <Compile Include="GameObjects\Question\SimplePercentage.cs" />
-    <Compile Include="GameObjects\Question\Triangle.cs" />
+    <Compile Include="GameObjects\Question\TriangleInequality.cs" />
     <Compile Include="GameObjects\TimedEvent.cs" />
     <Compile Include="MaterialSkin\Animations\AnimationDirection.cs" />
     <Compile Include="MaterialSkin\Animations\AnimationManager.cs" />
@@ -157,6 +179,9 @@
     <EmbeddedResource Include="GameObjects\CustomControls\QuestionCard.resx">
       <DependentUpon>QuestionCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GameObjects\CustomControls\TimedEffectCard.resx">
+      <DependentUpon>TimedEffectCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MaterialSkin\Controls\MaterialForm.resx">
       <DependentUpon>MaterialForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,9 +214,6 @@
     <None Include="Resources\StartScreenBGDark.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\StartScreenBG.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\backArrow.png" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +239,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ic_chevron_left_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StartScreenBGDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StartScreenBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

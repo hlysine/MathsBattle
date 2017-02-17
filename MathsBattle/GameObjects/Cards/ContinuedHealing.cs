@@ -20,7 +20,7 @@ namespace MathsBattle.GameObjects.Cards
         {
             get
             {
-                return "30 MP: Heal 5 HP every 1 second for 12 seconds";
+                return "Heal 5 HP every 1 second for 12 seconds";
             }
         }
 

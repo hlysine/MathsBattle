@@ -1,6 +1,6 @@
 ﻿namespace MathsBattle
 {
-    partial class Form1
+    public partial class Form1
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -33,6 +33,7 @@
             this.Screens = new MaterialSkin.Controls.MaterialTabControl();
             this.screenStart = new MaterialSkin.Controls.MaterialTabPage();
             this.panelRightDock = new MaterialSkin.Controls.MaterialPanel();
+            this.btnSettings = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnStartBattle = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnExercise = new MaterialSkin.Controls.MaterialFlatButton();
             this.panelTips = new MaterialSkin.Controls.MaterialPanel();
@@ -43,11 +44,10 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.screenGameSettings = new MaterialSkin.Controls.MaterialTabPage();
             this.materialCardPanel1 = new MaterialSkin.Controls.MaterialCardPanel();
-            this.btnStartGame = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.rb15Minute = new MaterialSkin.Controls.MaterialRadioButton();
-            this.rb10Minute = new MaterialSkin.Controls.MaterialRadioButton();
-            this.rb5Minute = new MaterialSkin.Controls.MaterialRadioButton();
-            this.rb2Minute = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rb15Minute = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rb10Minute = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rb5Minute = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rb2Minute = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.panelOppFooter = new MaterialSkin.Controls.MaterialPanel();
@@ -85,6 +85,8 @@
             this.avatarMe = new MaterialSkin.Controls.MaterialAvatar();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.screenGameOver = new MaterialSkin.Controls.MaterialTabPage();
+            this.lblGameOverHighscore = new MaterialSkin.Controls.MaterialLabel();
+            this.lblGameOverScore = new MaterialSkin.Controls.MaterialLabel();
             this.panelGameOverFooter = new MaterialSkin.Controls.MaterialPanel();
             this.btnGameOverBack = new MaterialSkin.Controls.MaterialFlatButton();
             this.lblGameResult = new MaterialSkin.Controls.MaterialLabel();
@@ -98,11 +100,26 @@
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.screenSettings = new MaterialSkin.Controls.MaterialTabPage();
+            this.panelDialogBG = new MaterialSkin.Controls.MaterialPanel();
+            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.panelRestartDialog = new MaterialSkin.Controls.MaterialCardPanel();
+            this.btnThemeCancel = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnThemeOK = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
+            this.toggleShowBGImage = new MaterialSkin.Controls.MaterialToggle();
+            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
+            this.toggleUseDarkTheme = new MaterialSkin.Controls.MaterialToggle();
+            this.panelSettingsFooter = new MaterialSkin.Controls.MaterialPanel();
+            this.btnSettingsBack = new MaterialSkin.Controls.MaterialFlatButton();
             this.timerBattle = new System.Windows.Forms.Timer(this.components);
             this.timerMeRecentCard = new System.Windows.Forms.Timer(this.components);
             this.timerOppRecentCard = new System.Windows.Forms.Timer(this.components);
             this.timerKillBanner = new System.Windows.Forms.Timer(this.components);
             this.timerExercise = new System.Windows.Forms.Timer(this.components);
+            this.timerGameOverStats = new System.Windows.Forms.Timer(this.components);
             this.Screens.SuspendLayout();
             this.screenStart.SuspendLayout();
             this.panelRightDock.SuspendLayout();
@@ -116,6 +133,10 @@
             this.screenGameOver.SuspendLayout();
             this.panelGameOverFooter.SuspendLayout();
             this.screenExercise.SuspendLayout();
+            this.screenSettings.SuspendLayout();
+            this.panelDialogBG.SuspendLayout();
+            this.panelRestartDialog.SuspendLayout();
+            this.panelSettingsFooter.SuspendLayout();
             this.SuspendLayout();
             // 
             // Screens
@@ -125,9 +146,11 @@
             this.Screens.Controls.Add(this.screenBattle);
             this.Screens.Controls.Add(this.screenGameOver);
             this.Screens.Controls.Add(this.screenExercise);
+            this.Screens.Controls.Add(this.screenSettings);
             this.Screens.Depth = 0;
             this.Screens.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Screens.Location = new System.Drawing.Point(0, 24);
+            this.Screens.Margin = new System.Windows.Forms.Padding(0);
             this.Screens.MouseState = MaterialSkin.MouseState.HOVER;
             this.Screens.Name = "Screens";
             this.Screens.SelectedIndex = 0;
@@ -153,6 +176,7 @@
             // 
             // panelRightDock
             // 
+            this.panelRightDock.Controls.Add(this.btnSettings);
             this.panelRightDock.Controls.Add(this.btnStartBattle);
             this.panelRightDock.Controls.Add(this.btnExercise);
             this.panelRightDock.Depth = 5;
@@ -162,6 +186,24 @@
             this.panelRightDock.Name = "panelRightDock";
             this.panelRightDock.Size = new System.Drawing.Size(190, 496);
             this.panelRightDock.TabIndex = 5;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSettings.Depth = 0;
+            this.btnSettings.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnSettings.FontSize = 9;
+            this.btnSettings.Icon = null;
+            this.btnSettings.Location = new System.Drawing.Point(69, 351);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSettings.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Primary = false;
+            this.btnSettings.Size = new System.Drawing.Size(113, 35);
+            this.btnSettings.TabIndex = 4;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnSettings_ClickAnimationFinished);
             // 
             // btnStartBattle
             // 
@@ -207,7 +249,7 @@
             this.panelTips.Controls.Add(this.lblTips);
             this.panelTips.Controls.Add(this.materialLabel2);
             this.panelTips.Depth = 5;
-            this.panelTips.Location = new System.Drawing.Point(6, 341);
+            this.panelTips.Location = new System.Drawing.Point(6, 329);
             this.panelTips.MouseState = MaterialSkin.MouseState.HOVER;
             this.panelTips.Name = "panelTips";
             this.panelTips.Size = new System.Drawing.Size(299, 146);
@@ -315,7 +357,6 @@
             this.materialCardPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialCardPanel1.AutoSize = true;
             this.materialCardPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.materialCardPanel1.Controls.Add(this.btnStartGame);
             this.materialCardPanel1.Controls.Add(this.rb15Minute);
             this.materialCardPanel1.Controls.Add(this.rb10Minute);
             this.materialCardPanel1.Controls.Add(this.rb5Minute);
@@ -323,88 +364,84 @@
             this.materialCardPanel1.Controls.Add(this.materialLabel12);
             this.materialCardPanel1.Controls.Add(this.materialLabel9);
             this.materialCardPanel1.Depth = 0;
-            this.materialCardPanel1.Location = new System.Drawing.Point(285, 20);
+            this.materialCardPanel1.Location = new System.Drawing.Point(273, 11);
             this.materialCardPanel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCardPanel1.Name = "materialCardPanel1";
             this.materialCardPanel1.Primary = false;
-            this.materialCardPanel1.Size = new System.Drawing.Size(330, 421);
+            this.materialCardPanel1.Size = new System.Drawing.Size(342, 439);
             this.materialCardPanel1.TabIndex = 1;
-            // 
-            // btnStartGame
-            // 
-            this.btnStartGame.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnStartGame.Depth = 0;
-            this.btnStartGame.Font = new System.Drawing.Font("Roboto", 12F);
-            this.btnStartGame.FontSize = 12;
-            this.btnStartGame.Icon = null;
-            this.btnStartGame.Location = new System.Drawing.Point(205, 375);
-            this.btnStartGame.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnStartGame.Name = "btnStartGame";
-            this.btnStartGame.Primary = true;
-            this.btnStartGame.Size = new System.Drawing.Size(119, 37);
-            this.btnStartGame.TabIndex = 9;
-            this.btnStartGame.Text = "Start";
-            this.btnStartGame.ClickAnimationFinished += new MaterialSkin.Controls.MaterialRaisedButton.ClickAnimationFinishedEventHandler(this.btnStartGame_ClickAnimationFinished);
             // 
             // rb15Minute
             // 
-            this.rb15Minute.Checked = false;
+            this.rb15Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rb15Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb15Minute.Depth = 0;
-            this.rb15Minute.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb15Minute.Location = new System.Drawing.Point(79, 241);
+            this.rb15Minute.Font = new System.Drawing.Font("Roboto", 9F);
+            this.rb15Minute.FontSize = 9;
+            this.rb15Minute.Icon = null;
+            this.rb15Minute.Location = new System.Drawing.Point(85, 234);
             this.rb15Minute.Margin = new System.Windows.Forms.Padding(0);
-            this.rb15Minute.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb15Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb15Minute.Name = "rb15Minute";
-            this.rb15Minute.Ripple = true;
+            this.rb15Minute.Primary = false;
             this.rb15Minute.Size = new System.Drawing.Size(174, 36);
             this.rb15Minute.TabIndex = 8;
             this.rb15Minute.Text = "15 Minutes";
+            this.rb15Minute.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.rbMinute_ClickAnimationFinished);
             // 
             // rb10Minute
             // 
-            this.rb10Minute.Checked = false;
+            this.rb10Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rb10Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb10Minute.Depth = 0;
-            this.rb10Minute.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb10Minute.Location = new System.Drawing.Point(79, 205);
+            this.rb10Minute.Font = new System.Drawing.Font("Roboto", 9F);
+            this.rb10Minute.FontSize = 9;
+            this.rb10Minute.Icon = null;
+            this.rb10Minute.Location = new System.Drawing.Point(85, 198);
             this.rb10Minute.Margin = new System.Windows.Forms.Padding(0);
-            this.rb10Minute.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb10Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb10Minute.Name = "rb10Minute";
-            this.rb10Minute.Ripple = true;
+            this.rb10Minute.Primary = false;
             this.rb10Minute.Size = new System.Drawing.Size(174, 36);
             this.rb10Minute.TabIndex = 7;
             this.rb10Minute.Text = "10 Minutes";
+            this.rb10Minute.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.rbMinute_ClickAnimationFinished);
             // 
             // rb5Minute
             // 
-            this.rb5Minute.Checked = false;
+            this.rb5Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rb5Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb5Minute.Depth = 0;
-            this.rb5Minute.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb5Minute.Location = new System.Drawing.Point(79, 169);
+            this.rb5Minute.Font = new System.Drawing.Font("Roboto", 9F);
+            this.rb5Minute.FontSize = 9;
+            this.rb5Minute.Icon = null;
+            this.rb5Minute.Location = new System.Drawing.Point(85, 162);
             this.rb5Minute.Margin = new System.Windows.Forms.Padding(0);
-            this.rb5Minute.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb5Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb5Minute.Name = "rb5Minute";
-            this.rb5Minute.Ripple = true;
+            this.rb5Minute.Primary = false;
             this.rb5Minute.Size = new System.Drawing.Size(174, 36);
             this.rb5Minute.TabIndex = 6;
             this.rb5Minute.Text = "5 Minutes";
+            this.rb5Minute.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.rbMinute_ClickAnimationFinished);
             // 
             // rb2Minute
             // 
-            this.rb2Minute.Checked = false;
+            this.rb2Minute.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rb2Minute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rb2Minute.Depth = 0;
-            this.rb2Minute.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb2Minute.Location = new System.Drawing.Point(79, 133);
+            this.rb2Minute.Font = new System.Drawing.Font("Roboto", 9F);
+            this.rb2Minute.FontSize = 9;
+            this.rb2Minute.Icon = null;
+            this.rb2Minute.Location = new System.Drawing.Point(85, 126);
             this.rb2Minute.Margin = new System.Windows.Forms.Padding(0);
-            this.rb2Minute.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb2Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb2Minute.Name = "rb2Minute";
-            this.rb2Minute.Ripple = true;
+            this.rb2Minute.Primary = false;
             this.rb2Minute.Size = new System.Drawing.Size(174, 36);
             this.rb2Minute.TabIndex = 5;
             this.rb2Minute.Text = "2 Minutes";
+            this.rb2Minute.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.rbMinute_ClickAnimationFinished);
             // 
             // materialLabel12
             // 
@@ -452,9 +489,9 @@
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBack.Depth = 0;
-            this.btnBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnBack.Font = new System.Drawing.Font("Roboto", 9F);
             this.btnBack.FontSize = 9;
             this.btnBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
@@ -463,7 +500,7 @@
             this.btnBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBack.Name = "btnBack";
             this.btnBack.Primary = false;
-            this.btnBack.Size = new System.Drawing.Size(92, 32);
+            this.btnBack.Size = new System.Drawing.Size(90, 32);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Back";
             this.btnBack.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnBack_ClickAnimationFinished);
@@ -680,6 +717,7 @@
             // 
             // lblTimeLeft
             // 
+            this.lblTimeLeft.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTimeLeft.BackColor = System.Drawing.Color.Transparent;
             this.lblTimeLeft.Depth = 0;
             this.lblTimeLeft.Font = new System.Drawing.Font("Roboto", 15F);
@@ -696,6 +734,7 @@
             // 
             // panelOppEffect
             // 
+            this.panelOppEffect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelOppEffect.Depth = 0;
             this.panelOppEffect.Location = new System.Drawing.Point(306, 126);
             this.panelOppEffect.MouseState = MaterialSkin.MouseState.HOVER;
@@ -782,6 +821,7 @@
             // 
             // panelMeEffect
             // 
+            this.panelMeEffect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMeEffect.Depth = 0;
             this.panelMeEffect.Location = new System.Drawing.Point(94, 126);
             this.panelMeEffect.MouseState = MaterialSkin.MouseState.HOVER;
@@ -967,6 +1007,7 @@
             // 
             // materialDivider1
             // 
+            this.materialDivider1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 2;
             this.materialDivider1.Location = new System.Drawing.Point(299, 39);
@@ -979,6 +1020,8 @@
             // screenGameOver
             // 
             this.screenGameOver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.screenGameOver.Controls.Add(this.lblGameOverHighscore);
+            this.screenGameOver.Controls.Add(this.lblGameOverScore);
             this.screenGameOver.Controls.Add(this.panelGameOverFooter);
             this.screenGameOver.Controls.Add(this.lblGameResult);
             this.screenGameOver.Controls.Add(this.materialLabel13);
@@ -991,6 +1034,42 @@
             this.screenGameOver.TabIndex = 3;
             this.screenGameOver.Text = "Game Over";
             this.screenGameOver.UseVisualStyleBackColor = true;
+            // 
+            // lblGameOverHighscore
+            // 
+            this.lblGameOverHighscore.BackColor = System.Drawing.Color.Transparent;
+            this.lblGameOverHighscore.Depth = 0;
+            this.lblGameOverHighscore.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblGameOverHighscore.Font = new System.Drawing.Font("Roboto", 20F);
+            this.lblGameOverHighscore.FontSize = 20;
+            this.lblGameOverHighscore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblGameOverHighscore.Location = new System.Drawing.Point(8, 232);
+            this.lblGameOverHighscore.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblGameOverHighscore.Name = "lblGameOverHighscore";
+            this.lblGameOverHighscore.Primary = true;
+            this.lblGameOverHighscore.Size = new System.Drawing.Size(847, 72);
+            this.lblGameOverHighscore.TabIndex = 4;
+            this.lblGameOverHighscore.Text = "Highscore: ";
+            this.lblGameOverHighscore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGameOverHighscore.Visible = false;
+            // 
+            // lblGameOverScore
+            // 
+            this.lblGameOverScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblGameOverScore.Depth = 0;
+            this.lblGameOverScore.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblGameOverScore.Font = new System.Drawing.Font("Roboto", 25F);
+            this.lblGameOverScore.FontSize = 25;
+            this.lblGameOverScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblGameOverScore.Location = new System.Drawing.Point(8, 160);
+            this.lblGameOverScore.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblGameOverScore.Name = "lblGameOverScore";
+            this.lblGameOverScore.Primary = true;
+            this.lblGameOverScore.Size = new System.Drawing.Size(847, 72);
+            this.lblGameOverScore.TabIndex = 3;
+            this.lblGameOverScore.Text = "Score: ";
+            this.lblGameOverScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGameOverScore.Visible = false;
             // 
             // panelGameOverFooter
             // 
@@ -1006,9 +1085,9 @@
             // 
             // btnGameOverBack
             // 
+            this.btnGameOverBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGameOverBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnGameOverBack.Depth = 0;
-            this.btnGameOverBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnGameOverBack.Font = new System.Drawing.Font("Roboto", 9F);
             this.btnGameOverBack.FontSize = 9;
             this.btnGameOverBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
@@ -1027,14 +1106,14 @@
             this.lblGameResult.BackColor = System.Drawing.Color.Transparent;
             this.lblGameResult.Depth = 0;
             this.lblGameResult.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblGameResult.Font = new System.Drawing.Font("Roboto", 25F);
-            this.lblGameResult.FontSize = 25;
+            this.lblGameResult.Font = new System.Drawing.Font("Roboto", 35F);
+            this.lblGameResult.FontSize = 35;
             this.lblGameResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblGameResult.Location = new System.Drawing.Point(8, 57);
             this.lblGameResult.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblGameResult.Name = "lblGameResult";
             this.lblGameResult.Primary = true;
-            this.lblGameResult.Size = new System.Drawing.Size(847, 72);
+            this.lblGameResult.Size = new System.Drawing.Size(847, 103);
             this.lblGameResult.TabIndex = 1;
             this.lblGameResult.Text = "You Lose";
             this.lblGameResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1079,6 +1158,7 @@
             // 
             // lblExMark
             // 
+            this.lblExMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExMark.BackColor = System.Drawing.Color.Transparent;
             this.lblExMark.Depth = 0;
             this.lblExMark.Font = new System.Drawing.Font("Roboto", 35F);
@@ -1095,6 +1175,7 @@
             // 
             // panelExQuestionAlign
             // 
+            this.panelExQuestionAlign.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panelExQuestionAlign.Depth = 0;
             this.panelExQuestionAlign.Location = new System.Drawing.Point(63, 169);
             this.panelExQuestionAlign.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1193,6 +1274,230 @@
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Drilling Exercise";
             // 
+            // screenSettings
+            // 
+            this.screenSettings.Controls.Add(this.panelDialogBG);
+            this.screenSettings.Controls.Add(this.panelSettingsFooter);
+            this.screenSettings.Depth = 0;
+            this.screenSettings.Location = new System.Drawing.Point(4, 22);
+            this.screenSettings.MouseState = MaterialSkin.MouseState.HOVER;
+            this.screenSettings.Name = "screenSettings";
+            this.screenSettings.Padding = new System.Windows.Forms.Padding(8);
+            this.screenSettings.Size = new System.Drawing.Size(863, 512);
+            this.screenSettings.TabIndex = 5;
+            this.screenSettings.Text = "Settings";
+            this.screenSettings.UseVisualStyleBackColor = true;
+            // 
+            // panelDialogBG
+            // 
+            this.panelDialogBG.Controls.Add(this.materialLabel10);
+            this.panelDialogBG.Controls.Add(this.panelRestartDialog);
+            this.panelDialogBG.Controls.Add(this.toggleShowBGImage);
+            this.panelDialogBG.Controls.Add(this.materialLabel16);
+            this.panelDialogBG.Controls.Add(this.materialLabel11);
+            this.panelDialogBG.Controls.Add(this.toggleUseDarkTheme);
+            this.panelDialogBG.Depth = 0;
+            this.panelDialogBG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDialogBG.Location = new System.Drawing.Point(8, 8);
+            this.panelDialogBG.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panelDialogBG.Name = "panelDialogBG";
+            this.panelDialogBG.Size = new System.Drawing.Size(847, 448);
+            this.panelDialogBG.TabIndex = 8;
+            // 
+            // materialLabel10
+            // 
+            this.materialLabel10.AutoSize = true;
+            this.materialLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel10.Depth = 0;
+            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 20F);
+            this.materialLabel10.FontSize = 20;
+            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel10.Location = new System.Drawing.Point(16, 16);
+            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel10.Name = "materialLabel10";
+            this.materialLabel10.Primary = false;
+            this.materialLabel10.Size = new System.Drawing.Size(115, 33);
+            this.materialLabel10.TabIndex = 1;
+            this.materialLabel10.Text = "Settings";
+            // 
+            // panelRestartDialog
+            // 
+            this.panelRestartDialog.AutoSize = true;
+            this.panelRestartDialog.BackColor = System.Drawing.Color.Transparent;
+            this.panelRestartDialog.Controls.Add(this.btnThemeCancel);
+            this.panelRestartDialog.Controls.Add(this.btnThemeOK);
+            this.panelRestartDialog.Controls.Add(this.materialLabel18);
+            this.panelRestartDialog.Controls.Add(this.materialLabel17);
+            this.panelRestartDialog.Depth = 0;
+            this.panelRestartDialog.Location = new System.Drawing.Point(302, 80);
+            this.panelRestartDialog.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panelRestartDialog.Name = "panelRestartDialog";
+            this.panelRestartDialog.Primary = false;
+            this.panelRestartDialog.Size = new System.Drawing.Size(324, 186);
+            this.panelRestartDialog.TabIndex = 7;
+            this.panelRestartDialog.Visible = false;
+            // 
+            // btnThemeCancel
+            // 
+            this.btnThemeCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnThemeCancel.Depth = 0;
+            this.btnThemeCancel.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnThemeCancel.FontSize = 9;
+            this.btnThemeCancel.Icon = null;
+            this.btnThemeCancel.Location = new System.Drawing.Point(144, 147);
+            this.btnThemeCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnThemeCancel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnThemeCancel.Name = "btnThemeCancel";
+            this.btnThemeCancel.Primary = false;
+            this.btnThemeCancel.Size = new System.Drawing.Size(84, 33);
+            this.btnThemeCancel.TabIndex = 3;
+            this.btnThemeCancel.Text = "Cancel";
+            this.btnThemeCancel.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnThemeCancel_ClickAnimationFinished);
+            // 
+            // btnThemeOK
+            // 
+            this.btnThemeOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnThemeOK.Depth = 0;
+            this.btnThemeOK.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnThemeOK.FontSize = 9;
+            this.btnThemeOK.Icon = null;
+            this.btnThemeOK.Location = new System.Drawing.Point(236, 147);
+            this.btnThemeOK.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnThemeOK.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnThemeOK.Name = "btnThemeOK";
+            this.btnThemeOK.Primary = true;
+            this.btnThemeOK.Size = new System.Drawing.Size(84, 33);
+            this.btnThemeOK.TabIndex = 2;
+            this.btnThemeOK.Text = "Restart";
+            this.btnThemeOK.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnThemeOK_ClickAnimationFinished);
+            // 
+            // materialLabel18
+            // 
+            this.materialLabel18.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel18.Depth = 0;
+            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel18.FontSize = 11;
+            this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel18.Location = new System.Drawing.Point(22, 52);
+            this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel18.Name = "materialLabel18";
+            this.materialLabel18.Primary = false;
+            this.materialLabel18.Size = new System.Drawing.Size(285, 69);
+            this.materialLabel18.TabIndex = 1;
+            this.materialLabel18.Text = "You need to restart MathsBattle for theme changes to take place. Continue?";
+            // 
+            // materialLabel17
+            // 
+            this.materialLabel17.AutoSize = true;
+            this.materialLabel17.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel17.Depth = 0;
+            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 15F);
+            this.materialLabel17.FontSize = 15;
+            this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel17.Location = new System.Drawing.Point(15, 11);
+            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel17.Name = "materialLabel17";
+            this.materialLabel17.Primary = false;
+            this.materialLabel17.Size = new System.Drawing.Size(189, 24);
+            this.materialLabel17.TabIndex = 0;
+            this.materialLabel17.Text = "Restart MathsBattle";
+            // 
+            // toggleShowBGImage
+            // 
+            this.toggleShowBGImage.BackColor = System.Drawing.Color.Transparent;
+            this.toggleShowBGImage.Checked = false;
+            this.toggleShowBGImage.Depth = 0;
+            this.toggleShowBGImage.Font = new System.Drawing.Font("Roboto", 10F);
+            this.toggleShowBGImage.Location = new System.Drawing.Point(396, 88);
+            this.toggleShowBGImage.Margin = new System.Windows.Forms.Padding(0);
+            this.toggleShowBGImage.MouseLocation = new System.Drawing.Point(0, 0);
+            this.toggleShowBGImage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.toggleShowBGImage.Name = "toggleShowBGImage";
+            this.toggleShowBGImage.Ripple = true;
+            this.toggleShowBGImage.Size = new System.Drawing.Size(67, 40);
+            this.toggleShowBGImage.TabIndex = 3;
+            this.toggleShowBGImage.Text = "Show BG Image";
+            this.toggleShowBGImage.CheckedChanged += new MaterialSkin.Controls.MaterialToggle.CheckedChangedEventHandler(this.toggleShowBGImage_CheckedChanged);
+            // 
+            // materialLabel16
+            // 
+            this.materialLabel16.AutoSize = true;
+            this.materialLabel16.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel16.Depth = 0;
+            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel16.FontSize = 11;
+            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel16.Location = new System.Drawing.Point(19, 158);
+            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel16.Name = "materialLabel16";
+            this.materialLabel16.Primary = false;
+            this.materialLabel16.Size = new System.Drawing.Size(120, 18);
+            this.materialLabel16.TabIndex = 6;
+            this.materialLabel16.Text = "Use Dark Theme";
+            // 
+            // materialLabel11
+            // 
+            this.materialLabel11.AutoSize = true;
+            this.materialLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel11.Depth = 0;
+            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel11.FontSize = 11;
+            this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel11.Location = new System.Drawing.Point(19, 99);
+            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel11.Name = "materialLabel11";
+            this.materialLabel11.Primary = false;
+            this.materialLabel11.Size = new System.Drawing.Size(363, 18);
+            this.materialLabel11.TabIndex = 4;
+            this.materialLabel11.Text = "Show Background Image during exercise and battle";
+            // 
+            // toggleUseDarkTheme
+            // 
+            this.toggleUseDarkTheme.BackColor = System.Drawing.Color.Transparent;
+            this.toggleUseDarkTheme.Checked = false;
+            this.toggleUseDarkTheme.Depth = 0;
+            this.toggleUseDarkTheme.Font = new System.Drawing.Font("Roboto", 10F);
+            this.toggleUseDarkTheme.Location = new System.Drawing.Point(396, 147);
+            this.toggleUseDarkTheme.Margin = new System.Windows.Forms.Padding(0);
+            this.toggleUseDarkTheme.MouseLocation = new System.Drawing.Point(0, 0);
+            this.toggleUseDarkTheme.MouseState = MaterialSkin.MouseState.HOVER;
+            this.toggleUseDarkTheme.Name = "toggleUseDarkTheme";
+            this.toggleUseDarkTheme.Ripple = true;
+            this.toggleUseDarkTheme.Size = new System.Drawing.Size(67, 40);
+            this.toggleUseDarkTheme.TabIndex = 5;
+            this.toggleUseDarkTheme.Text = "Dark Theme";
+            this.toggleUseDarkTheme.CheckedChanged += new MaterialSkin.Controls.MaterialToggle.CheckedChangedEventHandler(this.toggleUseDarkTheme_CheckedChanged);
+            // 
+            // panelSettingsFooter
+            // 
+            this.panelSettingsFooter.Controls.Add(this.btnSettingsBack);
+            this.panelSettingsFooter.Depth = 5;
+            this.panelSettingsFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelSettingsFooter.Location = new System.Drawing.Point(8, 456);
+            this.panelSettingsFooter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panelSettingsFooter.Name = "panelSettingsFooter";
+            this.panelSettingsFooter.Padding = new System.Windows.Forms.Padding(8);
+            this.panelSettingsFooter.Size = new System.Drawing.Size(847, 48);
+            this.panelSettingsFooter.TabIndex = 2;
+            // 
+            // btnSettingsBack
+            // 
+            this.btnSettingsBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSettingsBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSettingsBack.Depth = 0;
+            this.btnSettingsBack.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnSettingsBack.FontSize = 9;
+            this.btnSettingsBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
+            this.btnSettingsBack.Location = new System.Drawing.Point(8, 8);
+            this.btnSettingsBack.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSettingsBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSettingsBack.Name = "btnSettingsBack";
+            this.btnSettingsBack.Primary = false;
+            this.btnSettingsBack.Size = new System.Drawing.Size(90, 32);
+            this.btnSettingsBack.TabIndex = 0;
+            this.btnSettingsBack.Text = "Back";
+            this.btnSettingsBack.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnSettingsBack_ClickAnimationFinished);
+            // 
             // timerBattle
             // 
             this.timerBattle.Interval = 1000;
@@ -1218,16 +1523,22 @@
             this.timerExercise.Interval = 1000;
             this.timerExercise.Tick += new System.EventHandler(this.timerExercise_Tick);
             // 
+            // timerGameOverStats
+            // 
+            this.timerGameOverStats.Interval = 1000;
+            this.timerGameOverStats.Tick += new System.EventHandler(this.timerGameOverStats_Tick);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(871, 562);
             this.Controls.Add(this.Screens);
             this.Depth = 2;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maths Battle";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.Screens.ResumeLayout(false);
             this.screenStart.ResumeLayout(false);
@@ -1248,6 +1559,12 @@
             this.panelGameOverFooter.ResumeLayout(false);
             this.screenExercise.ResumeLayout(false);
             this.screenExercise.PerformLayout();
+            this.screenSettings.ResumeLayout(false);
+            this.panelDialogBG.ResumeLayout(false);
+            this.panelDialogBG.PerformLayout();
+            this.panelRestartDialog.ResumeLayout(false);
+            this.panelRestartDialog.PerformLayout();
+            this.panelSettingsFooter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1288,11 +1605,10 @@
         private MaterialSkin.Controls.MaterialPanel panelOppEffect;
         private MaterialSkin.Controls.MaterialPanel panelQuestionAlign;
         private MaterialSkin.Controls.MaterialCardPanel materialCardPanel1;
-        private MaterialSkin.Controls.MaterialRaisedButton btnStartGame;
-        private MaterialSkin.Controls.MaterialRadioButton rb15Minute;
-        private MaterialSkin.Controls.MaterialRadioButton rb10Minute;
-        private MaterialSkin.Controls.MaterialRadioButton rb5Minute;
-        private MaterialSkin.Controls.MaterialRadioButton rb2Minute;
+        private MaterialSkin.Controls.MaterialFlatButton rb15Minute;
+        private MaterialSkin.Controls.MaterialFlatButton rb10Minute;
+        private MaterialSkin.Controls.MaterialFlatButton rb5Minute;
+        private MaterialSkin.Controls.MaterialFlatButton rb2Minute;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private System.Windows.Forms.Timer timerBattle;
@@ -1327,6 +1643,24 @@
         private MaterialSkin.Controls.MaterialLabel lblTips;
         private MaterialSkin.Controls.MaterialFlatButton btnNextTip;
         private MaterialSkin.Controls.MaterialLabel lblExMark;
+        private MaterialSkin.Controls.MaterialFlatButton btnSettings;
+        private MaterialSkin.Controls.MaterialTabPage screenSettings;
+        private MaterialSkin.Controls.MaterialLabel materialLabel16;
+        private MaterialSkin.Controls.MaterialToggle toggleUseDarkTheme;
+        private MaterialSkin.Controls.MaterialLabel materialLabel11;
+        private MaterialSkin.Controls.MaterialToggle toggleShowBGImage;
+        private MaterialSkin.Controls.MaterialPanel panelSettingsFooter;
+        private MaterialSkin.Controls.MaterialFlatButton btnSettingsBack;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialLabel lblGameOverHighscore;
+        private MaterialSkin.Controls.MaterialLabel lblGameOverScore;
+        private System.Windows.Forms.Timer timerGameOverStats;
+        private MaterialSkin.Controls.MaterialPanel panelDialogBG;
+        private MaterialSkin.Controls.MaterialCardPanel panelRestartDialog;
+        private MaterialSkin.Controls.MaterialFlatButton btnThemeCancel;
+        private MaterialSkin.Controls.MaterialFlatButton btnThemeOK;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialLabel materialLabel17;
     }
 }
 

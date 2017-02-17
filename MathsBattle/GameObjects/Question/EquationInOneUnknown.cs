@@ -13,12 +13,12 @@ namespace MathsBattle.GameObjects.Question
         Random rnd;
         public int answer { get; set; }
 
-        const int MinTerm = 2;
-        const int MaxTerm = 5;
-        const int MinAns = -50;
-        const int MaxAns = 50;
-        const int MinInt = -50;
-        const int MaxInt = 50;
+        const int MinTerm = 1;
+        const int MaxTerm = 3;
+        const int MinAns = -20;
+        const int MaxAns = 20;
+        const int MinInt = -20;
+        const int MaxInt = 20;
 
         private string GetLeft(string unknown)
         {
@@ -50,6 +50,7 @@ namespace MathsBattle.GameObjects.Question
             {
                 rnd = new Random(seed.GetValueOrDefault());
             }
+            regen:
             //Preperation
             if (MinTerm < 1) throw new ArgumentOutOfRangeException("MinTerm", "Minimum Term Count is smaller than 1");
             LeftTerms = new List<Term>();
@@ -57,7 +58,7 @@ namespace MathsBattle.GameObjects.Question
 
             //Randomize equation terms
             int LeftTermCount = rnd.Next(MinTerm, MaxTerm);
-            int RightTermCount = rnd.Next(MinTerm, MaxTerm);
+            int RightTermCount = rnd.Next(MinTerm, MaxTerm - 1);
             answer = rnd.Next(MinAns, MaxAns);
 
             for (int i = 1; i <= LeftTermCount; i++)
@@ -126,14 +127,30 @@ namespace MathsBattle.GameObjects.Question
                     RightTerms.Add(new Term(Fixer, false));
                 }
             }
+            //check if the equation has infinite solution
+            int LeftTotal2 = 0;
+            for (int i = 0; i < LeftTerms.Count; i++)
+            {
+                LeftTotal2 += LeftTerms[i].GetValue(answer + 10);
+            }
+            int RightTotal2 = 0;
+            for (int i = 0; i < RightTerms.Count; i++)
+            {
+                RightTotal2 += RightTerms[i].GetValue(answer + 10);
+            }
+            if (LeftTotal2 == RightTotal2)
+            {
+                //Oh no, REGENERATE a new equation!!!
+                goto regen;
+            }
             //output question
             string CorrectAns = answer.ToString();
             List<string> AnsStr = new List<string>();
             string QuestionStr = GetLeft("x") + "=" + GetRight("x");
             AnsStr.Add(CorrectAns);
-            AnsStr.Add((answer + rnd.Next(-20, 20)).ToString());
-            AnsStr.Add((answer + rnd.Next(-20, 20)).ToString());
-            AnsStr.Add((answer + rnd.Next(-20, 20)).ToString());
+            AnsStr.Add((answer + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))).ToString());
+            AnsStr.Add((answer + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))).ToString());
+            AnsStr.Add((answer + (rnd.Next(2) == 1 ? -rnd.Next(1, 20) : rnd.Next(1, 20))).ToString());
             return new Question(QuestionStr, AnsStr, CorrectAns);
         }
 

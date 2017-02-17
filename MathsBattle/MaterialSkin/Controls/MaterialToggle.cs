@@ -59,7 +59,7 @@ namespace MaterialSkin.Controls
             }
         }
 
-        private bool _checked;
+        private bool _checked = false;
         [Category("Behavior"), Browsable(true)]
         public bool Checked
         {
@@ -69,8 +69,15 @@ namespace MaterialSkin.Controls
             }
             set
             {
-                _checked = value;
-                CheckedChanged?.Invoke(this, EventArgs.Empty);
+                if (value == _checked)
+                {
+                    _checked = value;
+                }
+                else
+                {
+                    _checked = value;
+                    CheckedChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 

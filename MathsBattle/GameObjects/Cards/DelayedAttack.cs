@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathsBattle.GameObjects.Cards
 {
-    public class ContinuedAttack : Card
+    public class DelayedAttack : Card
     {
         public override int Cost
         {
@@ -20,7 +20,7 @@ namespace MathsBattle.GameObjects.Cards
         {
             get
             {
-                return "Attack 3 HP every 1 second for 12 seconds";
+                return "Attack 50 HP after 3 seconds";
             }
         }
 
@@ -28,16 +28,16 @@ namespace MathsBattle.GameObjects.Cards
         {
             get
             {
-                return "Continued Attack";
+                return "Delayed Attack";
             }
         }
 
         public override void Action(Player from, Player to)
         {
-            TimedEvent te = new GameObjects.TimedEvent("Continued Attack", 12, 1000);
-            te.OnTick += sender =>
+            TimedEvent te = new GameObjects.TimedEvent("Delayed Attack", 3, 1000);
+            te.OnFinished += sender =>
             {
-                to.HP -= 3;
+                to.HP -= 50;
             };
             to.Effects.Add(te);
             te.Start();
