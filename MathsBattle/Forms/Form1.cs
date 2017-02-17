@@ -52,6 +52,7 @@ namespace MathsBattle
             typeof(TriangleInequality),
             typeof(PercentageChange),
             typeof(EquationInOneUnknown),
+            //typeof(BasicOperations),
             //typeof(LinearEquationInTwoUnknown)
         }.ToList();
         List<Card> CS = new Card[]
