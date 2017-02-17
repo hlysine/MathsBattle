@@ -380,7 +380,7 @@ namespace MathsBattle
         }
         private void newQuestion()
         {
-            Question q = QuestionGenerator.Generate(null, new Type[] { typeof(SimplePercentage) }.ToList());
+            Question q = QuestionGenerator.Generate(null, new Type[] { typeof(Triangle) }.ToList());
             QuestionCard card = new QuestionCard();
             card.Question = q;
             card.QuestionNo = questionNo;
