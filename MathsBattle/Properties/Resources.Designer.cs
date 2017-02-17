@@ -73,6 +73,16 @@ namespace MathsBattle.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap basic3_105_calculator_512 {
+            get {
+                object obj = ResourceManager.GetObject("basic3_105_calculator_512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap darkCard {
             get {
                 object obj = ResourceManager.GetObject("darkCard", resourceCulture);
