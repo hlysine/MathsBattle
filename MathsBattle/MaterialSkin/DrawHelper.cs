@@ -49,7 +49,7 @@ namespace MaterialSkin
                     for (int i = p.Depth; i >= 1; i--)
                     {
                         g.TranslateTransform(-1f, -1f);                // <== shadow vector!
-                        using (Pen pen = new Pen(DrawHelper.BlendColor(Color.Transparent, MaterialSkinManager.SHADOW_COLOR, 255 - (double)i / (double)p.Depth * 255), 1.75f))
+                        using (Pen pen = new Pen(Color.FromArgb((int)((255-MaterialSkinManager.SHADOW_COLOR.A) * (1 - i / (float)p.Depth)), MaterialSkinManager.SHADOW_COLOR.RemoveAlpha()), 1.75f))
                         {
                             g.DrawPath(pen, GP);
                         }

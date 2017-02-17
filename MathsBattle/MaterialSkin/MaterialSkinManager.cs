@@ -30,13 +30,13 @@ namespace MaterialSkin
             }
         }
 
-	    private ColorScheme colorScheme;
+        private ColorScheme colorScheme;
         public ColorScheme ColorScheme
         {
-			get { return colorScheme; }
+            get { return colorScheme; }
             set
             {
-				colorScheme = value;
+                colorScheme = value;
                 UpdateBackgrounds();
             }
         }
@@ -121,7 +121,7 @@ namespace MaterialSkin
         public readonly Brush ACTION_BAR_TEXT_SECONDARY_BRUSH = new SolidBrush(Color.FromArgb(153, 255, 255, 255));
 
         //Shadow color for all controls
-        public static readonly Color SHADOW_COLOR = Color.Gray;
+        public static readonly Color SHADOW_COLOR = Color.FromArgb(150, 0, 0, 0);
 
         public Color GetPrimaryTextColor()
         {
@@ -131,17 +131,17 @@ namespace MaterialSkin
         public Brush GetPrimaryTextBrush()
         {
             return (Theme == Themes.LIGHT ? PRIMARY_TEXT_BLACK_BRUSH : PRIMARY_TEXT_WHITE_BRUSH);
-		}
+        }
 
-		public Color GetSecondaryTextColor()
-		{
-			return (Theme == Themes.LIGHT ? SECONDARY_TEXT_BLACK : SECONDARY_TEXT_WHITE);
-		}
+        public Color GetSecondaryTextColor()
+        {
+            return (Theme == Themes.LIGHT ? SECONDARY_TEXT_BLACK : SECONDARY_TEXT_WHITE);
+        }
 
-		public Brush GetSecondaryTextBrush()
-		{
-			return (Theme == Themes.LIGHT ? SECONDARY_TEXT_BLACK_BRUSH : SECONDARY_TEXT_WHITE_BRUSH);
-		}
+        public Brush GetSecondaryTextBrush()
+        {
+            return (Theme == Themes.LIGHT ? SECONDARY_TEXT_BLACK_BRUSH : SECONDARY_TEXT_WHITE_BRUSH);
+        }
 
         public Color GetDisabledOrHintColor()
         {
@@ -251,7 +251,7 @@ namespace MaterialSkin
             ROBOTO_MEDIUM_11 = new Font(LoadFont(Resources.Roboto_Medium), 11f);
             ROBOTO_REGULAR_9 = new Font(LoadFont(Resources.Roboto_Regular), 9f);
             Theme = Themes.LIGHT;
-			ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         public static MaterialSkinManager Instance
@@ -334,11 +334,11 @@ namespace MaterialSkin
                 controlToUpdate.BackColor = GetDividersColor();
             }
 
-	        if (controlToUpdate is MaterialListView)
-	        {
-		        controlToUpdate.BackColor = newBackColor;
+            if (controlToUpdate is MaterialListView)
+            {
+                controlToUpdate.BackColor = newBackColor;
 
-	        }
+            }
 
             //recursive call
             foreach (Control control in controlToUpdate.Controls)

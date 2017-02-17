@@ -368,11 +368,11 @@
             this.materialCardPanel1.Controls.Add(this.materialLabel12);
             this.materialCardPanel1.Controls.Add(this.materialLabel9);
             this.materialCardPanel1.Depth = 0;
-            this.materialCardPanel1.Location = new System.Drawing.Point(273, 10);
+            this.materialCardPanel1.Location = new System.Drawing.Point(273, 15);
             this.materialCardPanel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCardPanel1.Name = "materialCardPanel1";
             this.materialCardPanel1.Primary = false;
-            this.materialCardPanel1.Size = new System.Drawing.Size(342, 439);
+            this.materialCardPanel1.Size = new System.Drawing.Size(342, 427);
             this.materialCardPanel1.TabIndex = 1;
             // 
             // rb15Minute
@@ -383,7 +383,7 @@
             this.rb15Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb15Minute.FontSize = 9;
             this.rb15Minute.Icon = null;
-            this.rb15Minute.Location = new System.Drawing.Point(85, 234);
+            this.rb15Minute.Location = new System.Drawing.Point(85, 228);
             this.rb15Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb15Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb15Minute.Name = "rb15Minute";
@@ -401,7 +401,7 @@
             this.rb10Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb10Minute.FontSize = 9;
             this.rb10Minute.Icon = null;
-            this.rb10Minute.Location = new System.Drawing.Point(85, 198);
+            this.rb10Minute.Location = new System.Drawing.Point(85, 192);
             this.rb10Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb10Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb10Minute.Name = "rb10Minute";
@@ -419,7 +419,7 @@
             this.rb5Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb5Minute.FontSize = 9;
             this.rb5Minute.Icon = null;
-            this.rb5Minute.Location = new System.Drawing.Point(85, 162);
+            this.rb5Minute.Location = new System.Drawing.Point(85, 156);
             this.rb5Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb5Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb5Minute.Name = "rb5Minute";
@@ -437,7 +437,7 @@
             this.rb2Minute.Font = new System.Drawing.Font("Roboto", 9F);
             this.rb2Minute.FontSize = 9;
             this.rb2Minute.Icon = null;
-            this.rb2Minute.Location = new System.Drawing.Point(85, 126);
+            this.rb2Minute.Location = new System.Drawing.Point(85, 120);
             this.rb2Minute.Margin = new System.Windows.Forms.Padding(0);
             this.rb2Minute.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb2Minute.Name = "rb2Minute";

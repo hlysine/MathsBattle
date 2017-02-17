@@ -24,7 +24,7 @@ namespace MaterialSkin.Controls
         public event ClickAnimationFinishedEventHandler ClickAnimationFinished;
 
         private readonly AnimationManager animationManager;
-        
+        private readonly AnimationManager hoverAnimationManager;
 
         private int _fSize = 9;
         [Category("Appearance")]
@@ -63,11 +63,17 @@ namespace MaterialSkin.Controls
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
             Primary = true;
 
+            hoverAnimationManager = new AnimationManager
+            {
+                Increment = 0.07,
+                AnimationType = AnimationType.Linear
+            };
             animationManager = new AnimationManager(false)
             {
                 Increment = 0.03,
                 AnimationType = AnimationType.EaseOut
             };
+            hoverAnimationManager.OnAnimationProgress += sender => Invalidate();
             animationManager.OnAnimationProgress += sender => Invalidate();
             animationManager.OnAnimationFinished += AnimationManager_OnAnimationFinished;
 
@@ -99,13 +105,6 @@ namespace MaterialSkin.Controls
             }
         }
 
-        protected override void OnMouseUp(MouseEventArgs mevent)
-        {
-            base.OnMouseUp(mevent);
-
-            animationManager.StartNewAnimation(AnimationDirection.In, mevent.Location);
-        }
-
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
@@ -121,6 +120,10 @@ namespace MaterialSkin.Controls
             {
                 g.FillPath(Primary ? SkinManager.ColorScheme.PrimaryBrush : SkinManager.GetRaisedButtonBackgroundBrush(), backgroundPath);
             }
+
+            Color c = SkinManager.GetFlatButtonHoverBackgroundColor();
+            using (Brush b = new SolidBrush(Color.FromArgb((int)(hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())))
+                g.FillRectangle(b, ClientRectangle);
 
             if (animationManager.IsAnimating())
             {
@@ -190,6 +193,41 @@ namespace MaterialSkin.Controls
                 extra += 24 + 4;
 
             return new Size((int)Math.Ceiling(textSize.Width) + extra, 36);
+        }
+
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+            if (DesignMode) return;
+            MouseState = MouseState.OUT;
+            MouseEnter += (sender, args) =>
+            {
+                MouseState = MouseState.HOVER;
+                hoverAnimationManager.StartNewAnimation(AnimationDirection.In);
+                Invalidate();
+            };
+            MouseLeave += (sender, args) =>
+            {
+                MouseState = MouseState.OUT;
+                hoverAnimationManager.StartNewAnimation(AnimationDirection.Out);
+                Invalidate();
+            };
+            MouseDown += (sender, args) =>
+            {
+                if (args.Button == MouseButtons.Left)
+                {
+                    MouseState = MouseState.DOWN;
+
+                    animationManager.StartNewAnimation(AnimationDirection.In, args.Location);
+                    Invalidate();
+                }
+            };
+            MouseUp += (sender, args) =>
+            {
+                MouseState = MouseState.HOVER;
+
+                Invalidate();
+            };
         }
     }
 }
