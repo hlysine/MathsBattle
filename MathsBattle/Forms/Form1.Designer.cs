@@ -33,6 +33,7 @@
             this.Screens = new MaterialSkin.Controls.MaterialTabControl();
             this.screenStart = new MaterialSkin.Controls.MaterialTabPage();
             this.panelRightDock = new MaterialSkin.Controls.MaterialPanel();
+            this.btnHelp = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnStartBattle = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnExercise = new MaterialSkin.Controls.MaterialFlatButton();
@@ -110,6 +111,11 @@
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.toggleUseDarkTheme = new MaterialSkin.Controls.MaterialToggle();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
+            this.screenHelp = new MaterialSkin.Controls.MaterialTabPage();
+            this.panelHelpFooter = new MaterialSkin.Controls.MaterialPanel();
+            this.btnHelpBack = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblHelpContext = new MaterialSkin.Controls.MaterialLabel();
             this.panelDialogBG = new MaterialSkin.Controls.MaterialPanel();
             this.panelDialog = new MaterialSkin.Controls.MaterialCardPanel();
             this.btnDialogCancel = new MaterialSkin.Controls.MaterialFlatButton();
@@ -138,6 +144,8 @@
             this.screenExercise.SuspendLayout();
             this.screenSettings.SuspendLayout();
             this.panelSettingsFooter.SuspendLayout();
+            this.screenHelp.SuspendLayout();
+            this.panelHelpFooter.SuspendLayout();
             this.panelDialogBG.SuspendLayout();
             this.panelDialog.SuspendLayout();
             this.panelFormBG.SuspendLayout();
@@ -151,6 +159,7 @@
             this.Screens.Controls.Add(this.screenGameOver);
             this.Screens.Controls.Add(this.screenExercise);
             this.Screens.Controls.Add(this.screenSettings);
+            this.Screens.Controls.Add(this.screenHelp);
             this.Screens.Depth = 0;
             this.Screens.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Screens.Location = new System.Drawing.Point(0, 0);
@@ -180,6 +189,7 @@
             // 
             // panelRightDock
             // 
+            this.panelRightDock.Controls.Add(this.btnHelp);
             this.panelRightDock.Controls.Add(this.btnSettings);
             this.panelRightDock.Controls.Add(this.btnStartBattle);
             this.panelRightDock.Controls.Add(this.btnExercise);
@@ -190,6 +200,24 @@
             this.panelRightDock.Name = "panelRightDock";
             this.panelRightDock.Size = new System.Drawing.Size(190, 494);
             this.panelRightDock.TabIndex = 5;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnHelp.Depth = 0;
+            this.btnHelp.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnHelp.FontSize = 9;
+            this.btnHelp.Icon = null;
+            this.btnHelp.Location = new System.Drawing.Point(69, 302);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnHelp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Primary = false;
+            this.btnHelp.Size = new System.Drawing.Size(113, 35);
+            this.btnHelp.TabIndex = 5;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnHelp_ClickAnimationFinished);
             // 
             // btnSettings
             // 
@@ -1444,6 +1472,81 @@
             this.materialLabel11.TabIndex = 4;
             this.materialLabel11.Text = "Show Background Image during exercise and battle";
             // 
+            // screenHelp
+            // 
+            this.screenHelp.Controls.Add(this.panelHelpFooter);
+            this.screenHelp.Controls.Add(this.materialLabel18);
+            this.screenHelp.Controls.Add(this.lblHelpContext);
+            this.screenHelp.Depth = 0;
+            this.screenHelp.Location = new System.Drawing.Point(4, 22);
+            this.screenHelp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.screenHelp.Name = "screenHelp";
+            this.screenHelp.Padding = new System.Windows.Forms.Padding(8);
+            this.screenHelp.Size = new System.Drawing.Size(863, 510);
+            this.screenHelp.TabIndex = 6;
+            this.screenHelp.Text = "Help";
+            this.screenHelp.UseVisualStyleBackColor = true;
+            // 
+            // panelHelpFooter
+            // 
+            this.panelHelpFooter.Controls.Add(this.btnHelpBack);
+            this.panelHelpFooter.Depth = 5;
+            this.panelHelpFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelHelpFooter.Location = new System.Drawing.Point(8, 454);
+            this.panelHelpFooter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panelHelpFooter.Name = "panelHelpFooter";
+            this.panelHelpFooter.Padding = new System.Windows.Forms.Padding(8);
+            this.panelHelpFooter.Size = new System.Drawing.Size(847, 48);
+            this.panelHelpFooter.TabIndex = 2;
+            // 
+            // btnHelpBack
+            // 
+            this.btnHelpBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnHelpBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnHelpBack.Depth = 0;
+            this.btnHelpBack.Font = new System.Drawing.Font("Roboto", 9F);
+            this.btnHelpBack.FontSize = 9;
+            this.btnHelpBack.Icon = global::MathsBattle.Properties.Resources.backArrow;
+            this.btnHelpBack.Location = new System.Drawing.Point(8, 8);
+            this.btnHelpBack.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnHelpBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnHelpBack.Name = "btnHelpBack";
+            this.btnHelpBack.Primary = false;
+            this.btnHelpBack.Size = new System.Drawing.Size(90, 32);
+            this.btnHelpBack.TabIndex = 0;
+            this.btnHelpBack.Text = "Back";
+            this.btnHelpBack.ClickAnimationFinished += new MaterialSkin.Controls.MaterialFlatButton.ClickAnimationFinishedEventHandler(this.btnHelpBack_ClickAnimationFinished);
+            // 
+            // materialLabel18
+            // 
+            this.materialLabel18.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel18.Depth = 0;
+            this.materialLabel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 30F);
+            this.materialLabel18.FontSize = 30;
+            this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel18.Location = new System.Drawing.Point(8, 8);
+            this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel18.Name = "materialLabel18";
+            this.materialLabel18.Primary = false;
+            this.materialLabel18.Size = new System.Drawing.Size(847, 50);
+            this.materialLabel18.TabIndex = 1;
+            this.materialLabel18.Text = "Help";
+            // 
+            // lblHelpContext
+            // 
+            this.lblHelpContext.BackColor = System.Drawing.Color.Transparent;
+            this.lblHelpContext.Depth = 0;
+            this.lblHelpContext.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblHelpContext.FontSize = 11;
+            this.lblHelpContext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblHelpContext.Location = new System.Drawing.Point(16, 70);
+            this.lblHelpContext.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblHelpContext.Name = "lblHelpContext";
+            this.lblHelpContext.Primary = false;
+            this.lblHelpContext.Size = new System.Drawing.Size(825, 364);
+            this.lblHelpContext.TabIndex = 0;
+            // 
             // panelDialogBG
             // 
             this.panelDialogBG.Controls.Add(this.panelDialog);
@@ -1613,6 +1716,8 @@
             this.screenSettings.ResumeLayout(false);
             this.screenSettings.PerformLayout();
             this.panelSettingsFooter.ResumeLayout(false);
+            this.screenHelp.ResumeLayout(false);
+            this.panelHelpFooter.ResumeLayout(false);
             this.panelDialogBG.ResumeLayout(false);
             this.panelDialogBG.PerformLayout();
             this.panelDialog.ResumeLayout(false);
@@ -1717,6 +1822,12 @@
         private MaterialSkin.Controls.MaterialPanel panelFormBG;
         private MaterialSkin.Controls.MaterialFlatButton btnQuit;
         private MaterialSkin.Controls.MaterialFlatButton btnExQuit;
+        private MaterialSkin.Controls.MaterialTabPage screenHelp;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialLabel lblHelpContext;
+        private MaterialSkin.Controls.MaterialFlatButton btnHelp;
+        private MaterialSkin.Controls.MaterialPanel panelHelpFooter;
+        private MaterialSkin.Controls.MaterialFlatButton btnHelpBack;
     }
 }
 

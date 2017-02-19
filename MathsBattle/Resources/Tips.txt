@@ -8,6 +8,4 @@ You get 1/3 of the opponent's max HP when you defeat it.
 The CD of the opponent decreases as you answer a question or use a card.
 The opponent will attack you when it's CD reaches 0. Then, the CD will be refilled.
 The game ends when you have 0 HP or when the time's up.
-HP To MP is a dangerous card that may put you to death. Think twice before using it!
-Check if you have plenty of health before using HP To MP!
 HP Transfer is a powerful card that kills two birds with one stone.

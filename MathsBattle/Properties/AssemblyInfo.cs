@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("MathsBattle")]
-[assembly: AssemblyDescription("A program that aims to provide interactive and fun maths. exercises for students.")]
+[assembly: AssemblyDescription("A program that aims to provide interactive and fun math exercises for students.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HKTA THMSS")]
 [assembly: AssemblyProduct("MathsBattle")]

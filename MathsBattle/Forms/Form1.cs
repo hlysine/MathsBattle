@@ -197,6 +197,7 @@ namespace MathsBattle
             {
                 if (SupportsTransparentBackColor(c)) c.BackColor = Color.Transparent;
             }
+            lblHelpContext.Text = Properties.Resources.Help;
             ((Control)this).ResumeDrawing();
             SwitchScreen(screenStart);
         }
@@ -939,6 +940,16 @@ namespace MathsBattle
         private void btnQuit_ClickAnimationFinished(object sender)
         {
             ShowMsgBox(DialogMode.ConfirmBattleQuit);
+        }
+
+        private void btnHelp_ClickAnimationFinished(object sender)
+        {
+            SwitchScreen(screenHelp);
+        }
+
+        private void btnHelpBack_ClickAnimationFinished(object sender)
+        {
+            SwitchScreen(screenStart);
         }
     }
 

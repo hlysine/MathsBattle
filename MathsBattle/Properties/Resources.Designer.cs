@@ -91,6 +91,21 @@ namespace MathsBattle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 	To start a new game, choose &quot;Drilling exercise&quot; or &quot;Start Battle&quot; on the start screen and select the game length.
+        ///	
+        ///	Battle Mode:
+        ///		Answer questions on the right side panel. You can get 20 MP for each correct answer. Use cards to consume MP and attack opponents or heal yourself. The CD of opponents will drop everytime you use a card or answer a question. They will attack you when their CD reaches 0. The final score will be the number of opponents you have beaten.
+        ///
+        ///	Exercise Mode:
+        ///		Answer as much que [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap lightCard {

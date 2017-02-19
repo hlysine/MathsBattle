@@ -1,0 +1,14 @@
+	To start a new game, choose "Drilling exercise" or "Start Battle" on the start screen and select the game length.
+	
+	Battle Mode:
+		Answer questions on the right side panel. You can get 20 MP for each correct answer. Use cards to consume MP and attack opponents or heal yourself. The CD of opponents will drop everytime you use a card or answer a question. They will attack you when their CD reaches 0. The final score will be the number of opponents you have beaten.
+
+	Exercise Mode:
+		Answer as much question as possible in limited time. The percentage of correctness is shown on the top-right corner. Your final score will be the number of correct answers you have given.
+
+	App Settings:
+		Use Dark Theme
+			You can change the design theme by selecting "Use Dark Theme". You need to restart MathsBattle to apply changes.
+
+		Show Background Image during exercise and battle
+			You can toggle the background of exercise and battle mode. Performance will increase without background image.
